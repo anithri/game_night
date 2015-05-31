@@ -14,16 +14,21 @@ group :development, :test do
 end
 gem 'haml-rails'
 gem 'bootstrap-sass'
+gem 'bootswatch-rails'
+gem 'font-awesome-sass'
 gem 'haml-rails'
 gem 'high_voltage'
 gem 'pg'
 gem 'puma'
 gem 'simple_form'
+
+gem 'devise'
 group :development do
   gem 'better_errors'
   gem 'foreman'
   gem 'guard-bundler'
   gem 'guard-rails'
+  gem 'guard-livereload'
   gem 'guard-rspec'
   gem 'html2haml'
   gem 'quiet_assets'
@@ -35,7 +40,7 @@ group :development do
 end
 group :development, :test do
   gem 'factory_girl_rails'
-  gem 'faker'
+  gem 'ffaker'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
