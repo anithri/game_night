@@ -11,11 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531235357) do
+ActiveRecord::Schema.define(version: 20150603052122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "gaming_groups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "shared_with"
+    t.string   "slug",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "gaming_groups", ["slug"], name: "index_gaming_groups_on_slug", unique: true, using: :btree
+
+  create_table "group_members", id: false, force: :cascade do |t|
+    t.uuid    "player_id"
+    t.uuid    "gaming_group_id"
+    t.integer "role"
+  end
+
+  add_index "group_members", ["gaming_group_id"], name: "index_group_members_on_gaming_group_id", using: :btree
+  add_index "group_members", ["player_id"], name: "index_group_members_on_player_id", using: :btree
 
   create_table "player_accounts", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -45,10 +78,13 @@ ActiveRecord::Schema.define(version: 20150531235357) do
     t.uuid     "player_account_id"
     t.boolean  "public_email",      default: false
     t.string   "gravatar_email"
+    t.string   "slug",                              null: false
+    t.integer  "shared_with"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end
 
   add_index "players", ["player_account_id"], name: "index_players_on_player_account_id", using: :btree
+  add_index "players", ["slug"], name: "index_players_on_slug", unique: true, using: :btree
 
 end

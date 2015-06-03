@@ -40,6 +40,7 @@
 #
 
 Rails.application.routes.draw do
+  resources :gaming_groups
   resources :players
   resources :players
   devise_for :player_accounts

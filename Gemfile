@@ -21,6 +21,10 @@ gem 'pg'
 gem 'puma'
 gem 'simple_form'
 gem 'devise'
+gem 'friendly_id', '~>5.1'
+
+gem 'draper'
+
 group :development do
   gem 'annotate'
   gem 'better_errors'

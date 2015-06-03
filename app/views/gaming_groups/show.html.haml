@@ -1,0 +1,7 @@
+%h3= @gaming_group.name
+%p= @gaming_group.description
+= render partial: 'players/member_summary',
+         collection: @gaming_group.players,
+         as: :player,
+         locals: {gaming_group: @gaming_group},
+         layout: 'gaming_groups/members_block'
