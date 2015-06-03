@@ -18,6 +18,7 @@
 class GamingGroup < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
+  enum shared_with: [:private_group, :summarized_group, :public_group]
   has_many :group_members
   has_many :players, through: :group_members
 

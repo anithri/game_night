@@ -1,17 +1,24 @@
 %footer
   .navbar-footer.navbar.navbar-default.navbar-fixed-bottom{role: 'footer'}
     .container
-      .navbar-text.text-center.col-md-12
-        %small.center
-          &copy; #{Date.today.year} Scott M Parrish
-          %span.badge
-            MIT License - TODO
-          %span.badge
-            Privacy - TODO
-          %span.badge
-            Creative Commons - TODO
-          %span.badge
-            Rails - TODO
-          %span.badge
-            Ruby - TODO
+      .navbar-header
+        %a.navbar-brand{href: '#'}
+          %small.text-muted
+            &copy; #{Date.today.year} Scott M Parrish
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to creative_commons_url do
+            = image_tag 'https://i.creativecommons.org/l/by-sa/4.0/80x15.png', alt: 'Creative Commons License', style: 'border-width:0'
+        %li
+          = link_to mit_license_url do
+            = image_tag 'https://img.shields.io/badge/license-MIT-blue.svg'
+        %li
+          = link_to privacy_policy_url do
+            = image_tag 'https://img.shields.io/badge/Privacy-Policy-brightgreen.svg'
+        %li
+          = link_to 'https://www.ruby-lang.org/' do
+            = image_tag 'https://img.shields.io/badge/Ruby-2.2.1-red.svg'
+        %li
+          = link_to 'http://rubyonrails.org/' do
+            = image_tag 'https://img.shields.io/badge/Rails-4.2.1-red.svg'
 

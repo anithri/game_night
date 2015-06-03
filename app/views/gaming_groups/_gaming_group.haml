@@ -3,5 +3,6 @@
     .panel-heading
       .panel-title
         = link_to gaming_group.name, gaming_group
+        = visibility_icon_for(gaming_group)
     .panel-body
       = gaming_group.description

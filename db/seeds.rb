@@ -10,7 +10,7 @@ require 'ffaker'
 player_account = PlayerAccount.create(confirmed_at: Date.today,
                                       email:        "#{ENV['PLAYER_ACCOUNT_SEED_EMAIL']}",
                                       password:     "#{ENV['PLAYER_ACCOUNT_SEED_PASSWORD']}")
-player_account.player.update(name: FFaker::Name.name)
+player_account.player.update(name: 'Scott M Parrish')
 
 group = GamingGroup.create(name:        'Example Group',
                            description: 'just a bunch of hoopy froods who like to game.',
@@ -18,11 +18,19 @@ group = GamingGroup.create(name:        'Example Group',
 
 group.group_members.create(player: player_account.player, role: :owner)
 
-10.times do
-  pa             = PlayerAccount.create(confirmed_at: Date.today,
-                                        email:        FFaker::Internet.email,
-                                        password:     FFaker::Internet.password)
-  pa.player.name = FFaker::Name.name
-  group.group_members.create(player: pa.player, role: GroupMember.roles.keys[1..-2].sample)
+all_groups = [group]
 
+4.times do
+  all_groups << GamingGroup.create(name: FFaker::Company.name, description: FFaker::BaconIpsum.phrase)
+end
+
+20.times do
+  pa = PlayerAccount.create(confirmed_at: Date.today,
+                            email:        FFaker::Internet.email,
+                            password:     FFaker::Internet.password)
+  pa.player.update(name: FFaker::Name.name)
+
+  all_groups.sample(rand(3) + 1).each do |group|
+    group.group_members.create(player: pa.player, role: GroupMember.roles.keys[1..-1].sample)
+  end
 end
