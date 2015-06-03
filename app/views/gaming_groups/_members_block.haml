@@ -1,7 +1,8 @@
-.row
-  .col-md-4
-    .panel.panel-success
-      .panel-heading
-        Members
-      .panel-body
-        = yield
+.panel.panel-light
+  .panel-heading
+    Members
+  .panel-body
+    = render partial: 'players/member_summary',
+             collection: @gaming_group.players,
+             as: :player,
+             locals: {gaming_group: @gaming_group}

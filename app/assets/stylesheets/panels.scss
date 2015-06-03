@@ -1,0 +1,22 @@
+$panel-light-bg: #c9e4ca;
+$panel-light-border: darken(adjust_hue($panel-light-bg, 10),5%) !default;
+$panel-light-text: $brand-primary;
+
+$panel-medium-bg: #87bba2;
+$panel-medium-border: darken(adjust_hue($panel-medium-bg, 10),5%) !default;
+$panel-medium-text: $navbar-inverse-link-color;
+
+$panel-dark-bg: #55828b;
+$panel-dark-border: lighten(adjust_hue($panel-dark-bg, 10),5%) !default;
+$panel-dark-text: $navbar-inverse-link-color;
+
+.panel-light {
+  @include panel-variant($panel-light-border, $panel-light-text, $panel-light-bg, $panel-light-border);
+}
+.panel-medium {
+  @include panel-variant($panel-medium-border, $panel-medium-text, $panel-medium-bg, $panel-medium-border);
+}
+.panel-dark {
+  @include panel-variant($panel-dark-border, $panel-dark-text, $panel-dark-bg, $panel-dark-border);
+}
+
