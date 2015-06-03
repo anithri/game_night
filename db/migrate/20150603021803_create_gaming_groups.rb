@@ -3,7 +3,7 @@ class CreateGamingGroups < ActiveRecord::Migration
     create_table :gaming_groups, id: :uuid do |t|
       t.string :name
       t.text :description
-      t.integer :shared_with
+      t.integer :shared_with, default: 0
       t.string :slug, null: false
       t.timestamps null: false
     end

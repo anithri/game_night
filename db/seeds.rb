@@ -14,17 +14,21 @@ player_account.player.update(name: 'Scott M Parrish')
 
 group = GamingGroup.create(name:        'Example Group',
                            description: 'just a bunch of hoopy froods who like to game.',
+                           shared_with: GamingGroup.shared_withs.keys.sample
 )
 
 group.group_members.create(player: player_account.player, role: :owner)
 
 all_groups = [group]
 
-4.times do
-  all_groups << GamingGroup.create(name: FFaker::Company.name, description: FFaker::BaconIpsum.phrase)
+10.times do
+  all_groups << GamingGroup.create(name: FFaker::Company.name,
+                                   description: FFaker::BaconIpsum.phrase,
+                                   shared_with: GamingGroup.shared_withs.keys.sample
+  )
 end
 
-20.times do
+50.times do
   pa = PlayerAccount.create(confirmed_at: Date.today,
                             email:        FFaker::Internet.email,
                             password:     FFaker::Internet.password)
@@ -33,4 +37,7 @@ end
   all_groups.sample(rand(3) + 1).each do |group|
     group.group_members.create(player: pa.player, role: GroupMember.roles.keys[1..-1].sample)
   end
+end
+all_groups.sample(rand(5) + 1).each do |group|
+  group.group_members.create(player: player_account.player, role: GroupMember.roles.keys[1..-1].sample)
 end

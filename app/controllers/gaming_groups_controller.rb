@@ -4,12 +4,14 @@ class GamingGroupsController < ApplicationController
   # GET /gaming_groups
   # GET /gaming_groups.json
   def index
-    @gaming_groups = GamingGroup.all
+    @players_groups = authorized_gaming_groups
+    @gaming_groups = GamingGroup.all - @players_groups
   end
 
   # GET /gaming_groups/1
   # GET /gaming_groups/1.json
   def show
+    authorize @gaming_group
   end
 
   # GET /gaming_groups/new
@@ -70,5 +72,9 @@ class GamingGroupsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def gaming_group_params
       params.require(:gaming_group).permit(:name, :description, :owner_id)
+    end
+
+    def authorized_gaming_groups
+      current_player.gaming_groups
     end
 end

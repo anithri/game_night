@@ -4,7 +4,7 @@
 #
 #  player_id       :uuid
 #  gaming_group_id :uuid
-#  role            :integer
+#  role            :integer          default(0)
 #
 # Indexes
 #

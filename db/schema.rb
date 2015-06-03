@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20150603052122) do
   create_table "gaming_groups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "shared_with"
-    t.string   "slug",        null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "shared_with", default: 0
+    t.string   "slug",                    null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "gaming_groups", ["slug"], name: "index_gaming_groups_on_slug", unique: true, using: :btree
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150603052122) do
   create_table "group_members", id: false, force: :cascade do |t|
     t.uuid    "player_id"
     t.uuid    "gaming_group_id"
-    t.integer "role"
+    t.integer "role",            default: 0
   end
 
   add_index "group_members", ["gaming_group_id"], name: "index_group_members_on_gaming_group_id", using: :btree
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20150603052122) do
     t.boolean  "public_email",      default: false
     t.string   "gravatar_email"
     t.string   "slug",                              null: false
-    t.integer  "shared_with"
+    t.integer  "shared_with",       default: 0
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end

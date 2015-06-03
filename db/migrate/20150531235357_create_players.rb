@@ -6,7 +6,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.boolean :public_email, default: false
       t.string :gravatar_email
       t.string :slug, null: false
-      t.integer :shared_with
+      t.integer :shared_with, default: 0
       t.timestamps null: false
     end
     add_index :players, :slug, unique: true

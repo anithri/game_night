@@ -22,7 +22,7 @@ gem 'puma'
 gem 'simple_form'
 gem 'devise'
 gem 'friendly_id', '~>5.1'
-
+gem 'pundit'
 gem 'draper'
 
 group :development do

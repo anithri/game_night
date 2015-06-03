@@ -8,7 +8,7 @@
 #  public_email      :boolean          default(FALSE)
 #  gravatar_email    :string
 #  slug              :string           not null
-#  shared_with       :integer
+#  shared_with       :integer          default(0)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
@@ -23,5 +23,5 @@ class Player < ActiveRecord::Base
   friendly_id :name, use: :slugged
   belongs_to :player_account
   has_many :group_memberships, class_name: GroupMember
-  has_many :gaming_groups, through: :memberships
+  has_many :gaming_groups, through: :group_memberships
 end

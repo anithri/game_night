@@ -2,7 +2,10 @@
   .panel-heading
     Members
   .panel-body
-    = render partial: 'players/member_summary',
-             collection: @gaming_group.players,
-             as: :player,
-             locals: {gaming_group: @gaming_group}
+    - if @gaming_group.shared_with == 'public_group' || @gaming_group.has_member?(current_player)
+      = render partial: 'players/member_summary',
+               collection: @gaming_group.players,
+               as: :player,
+               locals: {gaming_group: @gaming_group}
+    - else
+      #{@gaming_group.players.size} Members

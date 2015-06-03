@@ -4,4 +4,11 @@ class GuestUser
   def name
     'Guest'
   end
+
+  def gaming_groups
+    []
+  end
+
+  
 end
+

@@ -8,7 +8,7 @@
 #  public_email      :boolean          default(FALSE)
 #  gravatar_email    :string
 #  slug              :string           not null
-#  shared_with       :integer
+#  shared_with       :integer          default(0)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
