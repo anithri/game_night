@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531223817) do
+ActiveRecord::Schema.define(version: 20150531235357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "player_accounts", force: :cascade do |t|
+  create_table "player_accounts", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -27,11 +28,27 @@ ActiveRecord::Schema.define(version: 20150531223817) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
+  add_index "player_accounts", ["confirmation_token"], name: "index_player_accounts_on_confirmation_token", unique: true, using: :btree
   add_index "player_accounts", ["email"], name: "index_player_accounts_on_email", unique: true, using: :btree
   add_index "player_accounts", ["reset_password_token"], name: "index_player_accounts_on_reset_password_token", unique: true, using: :btree
+
+  create_table "players", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "name"
+    t.uuid     "player_account_id"
+    t.boolean  "public_email",      default: false
+    t.string   "gravatar_email"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "players", ["player_account_id"], name: "index_players_on_player_account_id", using: :btree
 
 end

@@ -6,3 +6,5 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Environment variables (ENV['...']) can be set in the file .env file.
+
+PlayerAccount.create(confirmed_at: Date.today, email: "#{ENV['PLAYER_ACCOUNT_SEED_EMAIL']}", password: "#{ENV['PLAYER_ACCOUNT_SEED_PASSWORD']}")

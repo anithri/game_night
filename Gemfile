@@ -12,7 +12,6 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
-gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
 gem 'font-awesome-sass'
@@ -21,9 +20,9 @@ gem 'high_voltage'
 gem 'pg'
 gem 'puma'
 gem 'simple_form'
-
 gem 'devise'
 group :development do
+  gem 'annotate'
   gem 'better_errors'
   gem 'foreman'
   gem 'guard-bundler'
@@ -33,14 +32,20 @@ group :development do
   gem 'html2haml'
   gem 'quiet_assets'
   gem 'rails_layout'
+  gem 'letter_opener'
+  gem 'simple_bdd'
+  gem 'shoulda-matchers'
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
   gem 'spring-commands-rspec'
 end
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'ffaker'
+  gem 'pry'
+  gem 'pry-nav'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
@@ -50,6 +55,7 @@ group :production do
   gem 'rails_12factor'
 end
 group :test do
+  gem 'capybara-webkit'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
