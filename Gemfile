@@ -24,6 +24,7 @@ gem 'devise'
 gem 'friendly_id', '~>5.1'
 gem 'pundit'
 gem 'draper'
+gem 'paper_trail'
 
 group :development do
   gem 'annotate'

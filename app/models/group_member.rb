@@ -13,6 +13,7 @@
 #
 
 class GroupMember < ActiveRecord::Base
+  has_paper_trail
   belongs_to :player
   belongs_to :gaming_group
 

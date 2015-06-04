@@ -16,11 +16,12 @@ class GamingGroupsController < ApplicationController
 
   # GET /gaming_groups/new
   def new
-    @gaming_group = GamingGroup.new
+    authorize @gaming_group = GamingGroup.new
   end
 
   # GET /gaming_groups/1/edit
   def edit
+    authorize @gaming_group
   end
 
   # POST /gaming_groups

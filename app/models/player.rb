@@ -19,6 +19,7 @@
 #
 
 class Player < ActiveRecord::Base
+  has_paper_trail
   extend FriendlyId
   friendly_id :name, use: :slugged
   belongs_to :player_account

@@ -16,6 +16,7 @@
 #
 
 class GamingGroup < ActiveRecord::Base
+  has_paper_trail
   extend FriendlyId
   friendly_id :name, use: :slugged
   enum shared_with: [:private_group, :summarized_group, :public_group]
