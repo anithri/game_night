@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603052122) do
+ActiveRecord::Schema.define(version: 20150604005427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(version: 20150603052122) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "game_sessions", force: :cascade do |t|
+    t.date     "game_date"
+    t.string   "location"
+    t.text     "log"
+    t.uuid     "gaming_group_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "game_sessions", ["gaming_group_id"], name: "index_game_sessions_on_gaming_group_id", using: :btree
+
   create_table "gaming_groups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -41,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150603052122) do
 
   add_index "gaming_groups", ["slug"], name: "index_gaming_groups_on_slug", unique: true, using: :btree
 
-  create_table "group_members", id: false, force: :cascade do |t|
+  create_table "group_members", force: :cascade do |t|
     t.uuid    "player_id"
     t.uuid    "gaming_group_id"
     t.integer "role",            default: 0

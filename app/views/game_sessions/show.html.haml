@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Game date:
+  = @game_session.game_date
+%p
+  %b Location:
+  = @game_session.location
+%p
+  %b Log:
+  = @game_session.log
+
+= link_to 'Edit', edit_game_session_path(@game_session)
+\|
+= link_to 'Back', game_sessions_path

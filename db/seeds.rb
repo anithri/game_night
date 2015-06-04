@@ -22,10 +22,11 @@ group.group_members.create(player: player_account.player, role: :owner)
 all_groups = [group]
 
 10.times do
-  all_groups << GamingGroup.create(name: FFaker::Company.name,
+  all_groups << GamingGroup.create(name:        FFaker::Company.name,
                                    description: FFaker::BaconIpsum.phrase,
                                    shared_with: GamingGroup.shared_withs.keys.sample
   )
+
 end
 
 50.times do
@@ -40,4 +41,16 @@ end
 end
 all_groups.sample(rand(5) + 1).each do |group|
   group.group_members.create(player: player_account.player, role: GroupMember.roles.keys[1..-1].sample)
+end
+
+all_groups.each do |group|
+  sessions = 5 + rand(6)
+  sessions.times do
+    date = rand(90).days.ago
+    group.game_sessions.build(game_date: date,
+                               location:  FFaker::Education.school,
+                               log:       FFaker::BaconIpsum.phrase
+    )
+  end
+  group.save
 end

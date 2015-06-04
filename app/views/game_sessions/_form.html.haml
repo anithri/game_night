@@ -1,0 +1,10 @@
+= simple_form_for(@game_session) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :game_date
+    = f.input :location
+    = f.input :log
+
+  .form-actions
+    = f.button :submit

@@ -51,8 +51,11 @@
 #
 
 Rails.application.routes.draw do
-  resources :gaming_groups
-  resources :players
+
+  resources :gaming_groups do
+    resources :game_sessions
+  end
+
   resources :players
   devise_for :player_accounts
   get '/creative_commons', to: 'visitors#creative_commons'

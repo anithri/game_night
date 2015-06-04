@@ -2,6 +2,7 @@
 #
 # Table name: group_members
 #
+#  id              :integer          not null, primary key
 #  player_id       :uuid
 #  gaming_group_id :uuid
 #  role            :integer          default(0)

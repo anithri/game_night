@@ -9,6 +9,8 @@ class GuestUser
     []
   end
 
-  
+  def id
+    ''
+  end
 end
 

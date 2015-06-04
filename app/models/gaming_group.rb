@@ -23,6 +23,8 @@ class GamingGroup < ActiveRecord::Base
   has_many :group_members
   has_many :players, through: :group_members
 
+  has_many :game_sessions
+
   scope :all_public, -> { where(shared_with: [1, 2]) }
   validates :name, presence: true, uniqueness: true
 
