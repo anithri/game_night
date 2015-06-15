@@ -1,0 +1,16 @@
+= simple_form_for(game_summary) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :bgg_id
+    = f.input :thumbnail_url
+    = f.input :image_url
+    = f.input :year_published
+    = f.input :max_players
+    = f.input :min_players
+    = f.input :playing_time
+    = f.input :description
+
+  .form-actions
+    = f.button :submit

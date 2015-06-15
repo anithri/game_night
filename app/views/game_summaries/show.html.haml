@@ -1,0 +1,27 @@
+.row
+  .col-md-4
+    %h3
+      = @game_summary.name
+      %small= @game_summary.year_published
+    %p
+      %b Players:
+      = @game_summary.player_range
+    %p
+      %b Playing time:
+      = @game_summary.playing_time
+    %p
+      %b Categories:
+      = render @game_summary.categories
+    %p
+      %b Mechanics:
+      = render @game_summary.mechanics
+    %p
+      %b Families:
+      = render @game_summary.families
+  .col-md-8
+    = image_tag @game_summary.thumbnail_url
+
+%p
+  = @game_summary.description.html_safe
+
+= link_to 'Back', game_summaries_path

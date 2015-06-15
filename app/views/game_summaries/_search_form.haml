@@ -1,0 +1,16 @@
+= search_form_for @q, wrapper: 'horizontal_form',html: {id: 'filter_form', class: 'form form-horizontal'} do |f|
+  .panel.panel-info
+    .panel-heading
+      %h3.panel-title{style: 'color: white;'} Search Projects
+    .panel-body
+      = f.input :name_cont
+      = f.input :game_summary_links_bgg_link_id_in, collection: all_categories_links(), label_method: :name
+      = f.input :game_summary_links_bgg_link_id_in, collection: all_families_links(), label_method: :name
+      = f.input :game_summary_links_bgg_link_id_in, collection: all_mechanics_links(), label_method: :name
+    .panel-footer
+      .pull-left
+        %button.btn.btn-success{type: :submit}
+          = icon('search','Search')
+      .pull-right
+        = link_to icon('undo', 'Reset'), game_summaries_path, class: 'btn btn-danger'
+      .clearfix

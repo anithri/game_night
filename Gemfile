@@ -25,6 +25,12 @@ gem 'friendly_id', '~>5.1'
 gem 'pundit'
 gem 'draper'
 gem 'paper_trail'
+gem 'bgg', path: '../bgg', require: false
+gem 'dalli'
+gem 'interactor-rails'
+gem 'ransack'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :development do
   gem 'annotate'

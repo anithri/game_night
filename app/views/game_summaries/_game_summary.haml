@@ -1,0 +1,7 @@
+.col-md-3.center
+  = link_to game_summary_path(game_summary) do
+    %h4.center
+      = game_summary.name
+      %small= game_summary.year_published
+
+    = image_tag game_summary.thumbnail_url, class: :center

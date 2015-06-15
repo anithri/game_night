@@ -12,7 +12,7 @@ player_account = PlayerAccount.create(confirmed_at: Date.today,
                                       password:     "#{ENV['PLAYER_ACCOUNT_SEED_PASSWORD']}")
 player_account.player.update(name: 'Scott M Parrish')
 
-group = GamingGroup.create(name:        'Example Group',
+group = GamingGroup.create(name:        'Friends who game',
                            description: 'just a bunch of hoopy froods who like to game.',
                            shared_with: GamingGroup.shared_withs.keys.sample
 )
@@ -54,3 +54,11 @@ all_groups.each do |group|
   end
   group.save
 end
+
+[138161, 132531, 28143, 148228, 154203, 161417, 2338, 164153, 110327, 72125].each do |bgg_id|
+  bgg_game = WithBggApi::ImportById.call(cache: Rails.cache, bgg_id: bgg_id).new_game
+
+  WithBggApi::SummarizeGame.call(bgg_game: bgg_game).game_summary.save
+end
+
+

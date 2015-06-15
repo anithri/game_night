@@ -52,6 +52,8 @@
 
 Rails.application.routes.draw do
 
+  resources :game_libraries
+  resources :game_summaries, only: [:index, :show]
   resources :gaming_groups do
     resources :game_sessions
   end
