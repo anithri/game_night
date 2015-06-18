@@ -31,7 +31,10 @@ gem 'interactor-rails'
 gem 'ransack'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
-
+source 'https://rails-assets.org' do
+  gem 'rails-assets-select2-bootstrap'
+  gem 'rails-assets-select2'
+end
 group :development do
   gem 'annotate'
   gem 'better_errors'

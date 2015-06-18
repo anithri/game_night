@@ -18,7 +18,22 @@
 
 class GameSummary < ActiveRecord::Base
 
-  has_many :game_summary_links
-  has_many :bgg_links, through: :game_summary_links
+  has_many :game_summary_artists
+  has_many :bgg_artists, through: :game_summary_artists
+
+  has_many :game_summary_categories
+  has_many :bgg_categories, through: :game_summary_categories
+
+  has_many :game_summary_designers
+  has_many :bgg_designers, through: :game_summary_designers
+
+  has_many :game_summary_families
+  has_many :bgg_families, through: :game_summary_families
+
+  has_many :game_summary_mechanics
+  has_many :bgg_mechanics, through: :game_summary_mechanics
+
+  has_many :game_summary_publishers
+  has_many :bgg_publishers, through: :game_summary_publishers
 
 end

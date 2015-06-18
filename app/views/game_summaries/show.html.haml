@@ -1,6 +1,8 @@
 .row
   .col-md-4
-    %h3
+    = image_tag @game_summary.thumbnail_url
+  .col-md-8
+    %h3{style:'margin-top: -3px;'}
       = @game_summary.name
       %small= @game_summary.year_published
     %p
@@ -11,17 +13,28 @@
       = @game_summary.playing_time
     %p
       %b Categories:
-      = render @game_summary.categories
+      = render partial: 'bgg_categories/bgg_category_badge', collection: @game_summary.bgg_categories, as: :bgg_category
     %p
       %b Mechanics:
-      = render @game_summary.mechanics
+      = render partial: 'bgg_mechanics/bgg_mechanic_badge', collection: @game_summary.bgg_mechanics, as: :bgg_mechanic
     %p
       %b Families:
-      = render @game_summary.families
-  .col-md-8
-    = image_tag @game_summary.thumbnail_url
-
-%p
-  = @game_summary.description.html_safe
+      = render @game_summary.bgg_families
+.row
+  %p
+    = @game_summary.description.html_safe
+.row
+  .col-md-4
+    %p
+      %b Artists:
+      = render @game_summary.bgg_artists
+  .col-md-4
+    %p
+      %b Designers:
+      = render @game_summary.bgg_designers
+  .col-md-4
+    %p
+      %b Publishers:
+      = render @game_summary.bgg_publishers
 
 = link_to 'Back', game_summaries_path

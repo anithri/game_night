@@ -12,6 +12,7 @@
  *
  *= require 'framework_and_overrides'
  *= require 'scaffolds'
+ *= require select2
  *= require_self
  */
 
@@ -29,7 +30,7 @@ body { padding-top: 60px; }
 
 // And finally bootswatch style itself
 @import "bootswatch/flatly/bootswatch";
-
+@import "select2-bootstrap";
 // Whatever application styles you have go last
 @import "panels";
 @import "gaming_groups";

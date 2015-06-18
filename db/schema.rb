@@ -11,21 +11,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615015206) do
+ActiveRecord::Schema.define(version: 20150615234305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "bgg_links", force: :cascade do |t|
+  create_table "bgg_artists", force: :cascade do |t|
     t.integer  "bgg_id"
     t.string   "name"
-    t.string   "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "bgg_links", ["bgg_id", "type"], name: "index_bgg_links_on_bgg_id_and_type", unique: true, using: :btree
+  add_index "bgg_artists", ["bgg_id"], name: "index_bgg_artists_on_bgg_id", using: :btree
+
+  create_table "bgg_categories", force: :cascade do |t|
+    t.integer  "bgg_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bgg_categories", ["bgg_id"], name: "index_bgg_categories_on_bgg_id", using: :btree
+
+  create_table "bgg_designers", force: :cascade do |t|
+    t.integer  "bgg_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bgg_designers", ["bgg_id"], name: "index_bgg_designers_on_bgg_id", using: :btree
+
+  create_table "bgg_families", force: :cascade do |t|
+    t.integer  "bgg_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bgg_families", ["bgg_id"], name: "index_bgg_families_on_bgg_id", using: :btree
+
+  create_table "bgg_mechanics", force: :cascade do |t|
+    t.integer  "bgg_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bgg_mechanics", ["bgg_id"], name: "index_bgg_mechanics_on_bgg_id", using: :btree
+
+  create_table "bgg_publishers", force: :cascade do |t|
+    t.integer  "bgg_id"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bgg_publishers", ["bgg_id"], name: "index_bgg_publishers_on_bgg_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -84,15 +128,65 @@ ActiveRecord::Schema.define(version: 20150615015206) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "game_summary_links", force: :cascade do |t|
+  create_table "game_summary_artists", force: :cascade do |t|
     t.integer  "game_summary_id"
-    t.integer  "bgg_link_id"
+    t.integer  "bgg_artist_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
 
-  add_index "game_summary_links", ["bgg_link_id"], name: "index_game_summary_links_on_bgg_link_id", using: :btree
-  add_index "game_summary_links", ["game_summary_id"], name: "index_game_summary_links_on_game_summary_id", using: :btree
+  add_index "game_summary_artists", ["bgg_artist_id"], name: "index_game_summary_artists_on_bgg_artist_id", using: :btree
+  add_index "game_summary_artists", ["game_summary_id"], name: "index_game_summary_artists_on_game_summary_id", using: :btree
+
+  create_table "game_summary_categories", force: :cascade do |t|
+    t.integer  "game_summary_id"
+    t.integer  "bgg_category_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "game_summary_categories", ["bgg_category_id"], name: "index_game_summary_categories_on_bgg_category_id", using: :btree
+  add_index "game_summary_categories", ["game_summary_id"], name: "index_game_summary_categories_on_game_summary_id", using: :btree
+
+  create_table "game_summary_designers", force: :cascade do |t|
+    t.integer  "game_summary_id"
+    t.integer  "bgg_designer_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "game_summary_designers", ["bgg_designer_id"], name: "index_game_summary_designers_on_bgg_designer_id", using: :btree
+  add_index "game_summary_designers", ["game_summary_id"], name: "index_game_summary_designers_on_game_summary_id", using: :btree
+
+  create_table "game_summary_families", force: :cascade do |t|
+    t.integer  "game_summary_id"
+    t.integer  "bgg_family_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "game_summary_families", ["bgg_family_id"], name: "index_game_summary_families_on_bgg_family_id", using: :btree
+  add_index "game_summary_families", ["game_summary_id"], name: "index_game_summary_families_on_game_summary_id", using: :btree
+
+  create_table "game_summary_mechanics", force: :cascade do |t|
+    t.integer  "game_summary_id"
+    t.integer  "bgg_mechanic_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "game_summary_mechanics", ["bgg_mechanic_id"], name: "index_game_summary_mechanics_on_bgg_mechanic_id", using: :btree
+  add_index "game_summary_mechanics", ["game_summary_id"], name: "index_game_summary_mechanics_on_game_summary_id", using: :btree
+
+  create_table "game_summary_publishers", force: :cascade do |t|
+    t.integer  "game_summary_id"
+    t.integer  "bgg_publisher_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "game_summary_publishers", ["bgg_publisher_id"], name: "index_game_summary_publishers_on_bgg_publisher_id", using: :btree
+  add_index "game_summary_publishers", ["game_summary_id"], name: "index_game_summary_publishers_on_game_summary_id", using: :btree
 
   create_table "gaming_groups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "name"
@@ -174,6 +268,16 @@ ActiveRecord::Schema.define(version: 20150615015206) do
 
   add_foreign_key "game_library_items", "game_libraries"
   add_foreign_key "game_library_items", "game_summaries"
-  add_foreign_key "game_summary_links", "bgg_links"
-  add_foreign_key "game_summary_links", "game_summaries"
+  add_foreign_key "game_summary_artists", "bgg_artists"
+  add_foreign_key "game_summary_artists", "game_summaries"
+  add_foreign_key "game_summary_categories", "bgg_categories"
+  add_foreign_key "game_summary_categories", "game_summaries"
+  add_foreign_key "game_summary_designers", "bgg_designers"
+  add_foreign_key "game_summary_designers", "game_summaries"
+  add_foreign_key "game_summary_families", "bgg_families"
+  add_foreign_key "game_summary_families", "game_summaries"
+  add_foreign_key "game_summary_mechanics", "bgg_mechanics"
+  add_foreign_key "game_summary_mechanics", "game_summaries"
+  add_foreign_key "game_summary_publishers", "bgg_publishers"
+  add_foreign_key "game_summary_publishers", "game_summaries"
 end

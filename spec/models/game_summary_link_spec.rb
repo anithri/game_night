@@ -5,8 +5,6 @@
 #  id              :integer          not null, primary key
 #  game_summary_id :integer
 #  bgg_link_id     :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
 #
 # Indexes
 #

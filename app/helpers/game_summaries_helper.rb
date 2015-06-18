@@ -11,8 +11,26 @@ module GameSummariesHelper
     end
   end
   def all_mechanics_links
-    Rails.cache.fetch 'all_machanics_links', expires_in: 1.hour do
+    Rails.cache.fetch 'all_mechanics_links', expires_in: 1.hour do
       BggMechanic.all
     end
   end
+  def all_artists_links
+    Rails.cache.fetch 'all_artists_links', expires_in: 1.hour do
+      BggArtist.all
+    end
+  end
+  def all_designers_links
+    Rails.cache.fetch 'all_designers_links', expires_in: 1.hour do
+      BggDesigner.all
+    end
+  end
+  def all_publishers_links
+    Rails.cache.fetch 'all_publishers_links', expires_in: 1.hour do
+      BggPublisher.all
+    end
+  end
+
+
 end
+

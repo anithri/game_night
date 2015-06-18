@@ -1,0 +1,6 @@
+%h3
+  = link_to "Category:", bgg_categories_path
+  = @bgg_category.name
+.row
+  = render @bgg_category.game_summaries
+

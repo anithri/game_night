@@ -12,14 +12,16 @@ class WithBggApi::SummarizeGame
         min_players:    bgg_game.min_players,
         max_players:    bgg_game.max_players,
         playing_time:   bgg_game.playing_time,
-        description: bgg_game.description,
+        description:    bgg_game.description,
     )
 
     bgg_game.bgg_links.each do |bgg_link|
       next if skip_link?(bgg_link)
-      new_link = BggLink.find_or_create_by(bgg_id: bgg_link.id,type: "Bgg#{bgg_link.bgg_type.capitalize}")
+      link_class = "Bgg#{bgg_link.bgg_type.capitalize}".constantize
+      container = "bgg_#{bgg_link.bgg_type.pluralize}".intern
+      new_link   = link_class.find_or_create_by(bgg_id: bgg_link.id)
       new_link.update(name: bgg_link.value)
-      context.game_summary.bgg_links << new_link
+      context.game_summary.send(container) << new_link
     end
     context.game_summary.save
   end
@@ -29,6 +31,6 @@ class WithBggApi::SummarizeGame
   end
 
   def skip_link?(link)
-    ['expansion'].include? link.bgg_type
+    ['expansion', 'implementation'].include? link.bgg_type
   end
 end

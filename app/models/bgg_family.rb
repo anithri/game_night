@@ -1,18 +1,17 @@
 # == Schema Information
 #
-# Table name: bgg_links
+# Table name: bgg_families
 #
 #  id         :integer          not null, primary key
 #  bgg_id     :integer
 #  name       :string
-#  type       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 # Indexes
 #
-#  index_bgg_links_on_bgg_id_and_type  (bgg_id,type) UNIQUE
+#  index_bgg_families_on_bgg_id  (bgg_id)
 #
 
-class BggFamily < BggLink
+class BggFamily < ActiveRecord::Base
 end

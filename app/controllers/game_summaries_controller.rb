@@ -3,12 +3,12 @@ class GameSummariesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    q_param = params[:q]
+    q_param = params[:q] || {}
     page = params[:page]
     per_page = params[:per_page]
-
     @q = GameSummary.ransack q_param
-    @game_summaries = @q.result.page(page).per(per_page)
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @game_summaries = @q.result(distinct: true).page(page).per(per_page)
   end
 
   # GET /games/1
