@@ -1,0 +1,5 @@
+= form_tag bgg_game_searches_path, method: :post do |f|
+  .form-group
+    %label.sr-only{for: '#bgg_game_name_cont'}
+    = text_field_tag :bgg_game_name_cont, '', class: 'form-control', value: orig_term
+    %button.btn.btn-default{type: "submit"} Search BGG

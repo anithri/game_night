@@ -1,4 +1,20 @@
 %li
   = link_to icon('group', 'Gaming Groups'), gaming_groups_path
-%li
-  = link_to 'Games', game_summaries_path
+%li.dropdown
+  = link_to 'Games', '#', class: 'dropdown-toggle', data: {toggle: 'dropdown'}
+  %ul.dropdown-menu
+    %li= link_to 'All Games', game_summaries_path
+    %li= link_to 'Advanced Search', '#'
+    %li= link_to 'Import From BGG', bgg_game_searches_path
+    %li.divider
+
+    %li= link_to 'By Category', bgg_categories_path
+    %li= link_to 'By Family', bgg_families_path
+    %li= link_to 'By Mechanic', bgg_mechanics_path
+
+    %li.divider
+
+    %li= link_to 'By Artist', bgg_artists_path
+    %li= link_to 'By Designer', bgg_designers_path
+    %li= link_to 'By Publisher', bgg_publishers_path
+

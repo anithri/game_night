@@ -48,6 +48,9 @@ class GameLibrariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_library_params
-      params.require(:game_library).permit(:librarian_id)
+      params.require(:game_library).permit(
+          :librarian_id,
+          game_library_item_attributes: [:game_library_id, :game_summary_id]
+      )
     end
 end

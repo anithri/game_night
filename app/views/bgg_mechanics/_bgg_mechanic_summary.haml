@@ -3,9 +3,9 @@
     .panel-heading
       %h3.panel-title{style: 'color: white;'}
         = link_to bgg_mechanic.name, bgg_mechanic
+        %small
+          = link_to '[On BGG]', bgg_mechanic.bgg_url
     .panel-body
-      %p
-        = link_to 'BGG Link', "http://boardgamegeek.com/boardgamemechanic/#{bgg_mechanic.bgg_id}"
       %p
         Games:
         = bgg_mechanic.game_summaries.size

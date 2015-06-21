@@ -13,6 +13,11 @@
 #  index_game_summary_artists_on_bgg_artist_id    (bgg_artist_id)
 #  index_game_summary_artists_on_game_summary_id  (game_summary_id)
 #
+# Foreign Keys
+#
+#  fk_rails_70cffde040  (bgg_artist_id => bgg_artists.id)
+#  fk_rails_860bf39955  (game_summary_id => game_summaries.id)
+#
 
 require 'rails_helper'
 

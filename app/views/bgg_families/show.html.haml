@@ -1,6 +1,10 @@
-%p#notice= notice
+%h3
+  = link_to "Family:", bgg_families_path
+  = @bgg_family.name
+  %small
+    = link_to '[On BGG]', "https://boardgamegeek.com/boardgamefamily/#{@bgg_family.bgg_id}"
+
+.row
+  = render @bgg_family.game_summaries
 
 
-= link_to 'Edit', edit_bgg_family_path(@bgg_family)
-\|
-= link_to 'Back', bgg_families_path

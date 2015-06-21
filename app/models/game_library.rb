@@ -15,4 +15,8 @@
 
 class GameLibrary < ActiveRecord::Base
   belongs_to :librarian, polymorphic: true
+  has_many :game_library_items
+  has_many :game_summaries, through: :game_library_items
+
+  accepts_nested_attributes_for :game_library_items, reject_if: :all_blank, allow_destroy: true
 end

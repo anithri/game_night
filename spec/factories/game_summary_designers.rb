@@ -13,6 +13,11 @@
 #  index_game_summary_designers_on_bgg_designer_id  (bgg_designer_id)
 #  index_game_summary_designers_on_game_summary_id  (game_summary_id)
 #
+# Foreign Keys
+#
+#  fk_rails_b0589b9833  (bgg_designer_id => bgg_designers.id)
+#  fk_rails_c183556604  (game_summary_id => game_summaries.id)
+#
 
 FactoryGirl.define do
   factory :game_summary_designer do

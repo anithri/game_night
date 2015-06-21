@@ -1,0 +1,14 @@
+.col-md-3
+  .panel.panel-info
+    .panel-heading
+      %h3.panel-title{style: 'color: white;'}
+        = link_to bgg_artist.name, bgg_artist
+        %small
+          = link_to '[On BGG]', bgg_artist.bgg_url
+
+    .panel-body
+      %p
+        Games:
+        = bgg_artist.game_summaries.size
+      %p wishlist count
+    //.panel-footer

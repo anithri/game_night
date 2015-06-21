@@ -1,0 +1,10 @@
+.col-md-3
+  .panel.panel-info
+    .panel-heading
+      = search_result[:text]
+    .panel-body
+      .row
+        .col-md-6
+          = link_to icon('plus','Library'), '#', class: 'btn btn-success'
+        .col-md-6
+          = link_to icon('plus','Wishlist'), '#', class: 'btn btn-warning'

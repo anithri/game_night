@@ -1,0 +1,18 @@
+%h1 Search for games of BGG
+.row
+  .col-md-8
+    %p
+      In order to keep traffic costs down, searches are done on local copies of the
+      excellent
+      = link_to 'Board Game Geek\'s', 'https://boardgamegeek.com'
+      game summaries.  More advanced searches will always need to be done on Board
+      game geek, and then search here for specific names to do the import with.
+
+    .center-block
+      = render 'form', orig_term: ''
+  .col-md-4
+    Links To Recent Searches?
+
+.row
+  .center-block
+    %pre= @results.inspect

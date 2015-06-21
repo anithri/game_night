@@ -1,0 +1,11 @@
+%h1 BGG Game Import
+%p
+  In order to keep traffic costs down, searches are done on local copies of the
+  excellent
+  = link_to 'Board Game Geek\'s', 'https://boardgamegeek.com'
+  game summaries.  More advanced searches will always need to be done on Board
+  game geek, and then search here for specific names to do the import with.
+%hr
+= render 'form'
+
+= link_to 'Back', bgg_game_searches_path

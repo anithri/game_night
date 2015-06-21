@@ -14,4 +14,7 @@
 #
 
 class BggFamily < ActiveRecord::Base
+
+  has_many :game_summary_families
+  has_many :game_summaries, through: :game_summary_families
 end

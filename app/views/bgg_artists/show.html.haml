@@ -1,0 +1,7 @@
+%h3
+  = link_to "Artist:", bgg_artists_path
+  = @bgg_artist.name
+  %small
+    = link_to '[on BGG]', @bgg_artist.bgg_url
+.row
+  = render @bgg_artists.game_summaries

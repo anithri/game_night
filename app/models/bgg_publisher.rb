@@ -14,5 +14,6 @@
 #
 
 class BggPublisher < ActiveRecord::Base
-
+  has_many :game_summary_publishers
+  has_many :game_summaries, through: :game_summary_publishers
 end

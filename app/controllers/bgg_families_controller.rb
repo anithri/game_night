@@ -4,7 +4,12 @@ class BggFamiliesController < ApplicationController
   # GET /bgg_families
   # GET /bgg_families.json
   def index
-    @bgg_families = BggFamily.includes(:game_summaries).order(:name).all
+    q_param = params[:q] || {}
+    page = params[:page]
+    per_page = params[:per_page]
+    @q = BggFamily.ransack q_param
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @bgg_families = @q.result(distinct: true).page(page).per(per_page).decorate
   end
 
   # GET /bgg_families/1
@@ -13,13 +18,8 @@ class BggFamiliesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bgg_family
-      @bgg_family = BggFamily.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def bgg_family_params
-      params[:bgg_family]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bgg_family
+    @bgg_family = BggFamily.find(params[:id]).decorate
+  end
 end

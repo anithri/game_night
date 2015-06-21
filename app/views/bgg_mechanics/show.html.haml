@@ -1,6 +1,9 @@
 %h3
   = link_to "Mechanic:", bgg_mechanics_path
   = @bgg_mechanic.name
+  %small
+    = link_to '[On BGG]', "https://boardgamegeek.com/boardgamemechanic/#{@bgg_mechanic.bgg_id}"
+
 .row
   = render @bgg_mechanic.game_summaries
 

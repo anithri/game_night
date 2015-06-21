@@ -1,0 +1,3 @@
+class BggFamiliesDecorator < PaginatingDecorator
+
+end

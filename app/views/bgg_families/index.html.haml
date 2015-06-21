@@ -1,19 +1,5 @@
-%h1 Listing bgg_families
-
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    - @bgg_families.each do |bgg_family|
-      %tr
-        %td= link_to 'Show', bgg_family
-        %td= link_to 'Edit', edit_bgg_family_path(bgg_family)
-        %td= link_to 'Destroy', bgg_family, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Bgg family', new_bgg_family_path
+%h3 All Families
+.row
+  = render partial: 'bgg_families/bgg_family_summary', collection: @bgg_families, as: :bgg_family
+.row.center
+  = paginate @bgg_families, theme: 'twitter-bootstrap-3'

@@ -1,0 +1,3 @@
+class BggMechanicsDecorator < PaginatingDecorator
+
+end

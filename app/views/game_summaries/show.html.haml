@@ -1,7 +1,7 @@
 .row
-  .col-md-4
+  .col-md-3
     = image_tag @game_summary.thumbnail_url
-  .col-md-8
+  .col-md-7
     %h3{style:'margin-top: -3px;'}
       = @game_summary.name
       %small= @game_summary.year_published
@@ -15,11 +15,14 @@
       %b Categories:
       = render partial: 'bgg_categories/bgg_category_badge', collection: @game_summary.bgg_categories, as: :bgg_category
     %p
+      %b Families:
+      = render partial: 'bgg_families/bgg_family_badge', collection: @game_summary.bgg_families, as: :bgg_family
+    %p
       %b Mechanics:
       = render partial: 'bgg_mechanics/bgg_mechanic_badge', collection: @game_summary.bgg_mechanics, as: :bgg_mechanic
-    %p
-      %b Families:
-      = render @game_summary.bgg_families
+  .col-md-2
+    = link_to "https://boardgamegeek.com/boardgame/161297/paradox#{@game_summary.bgg_id}}" do
+      = image_tag 'bgg_cornerlogo.png'
 .row
   %p
     = @game_summary.description.html_safe

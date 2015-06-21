@@ -1,0 +1,3 @@
+class BggPublishersDecorator < PaginatingDecorator
+
+end

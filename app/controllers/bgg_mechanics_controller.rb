@@ -4,7 +4,12 @@ class BggMechanicsController < ApplicationController
   # GET /bgg_mechanics
   # GET /bgg_mechanics.json
   def index
-    @bgg_mechanics = BggMechanic.order(:name).all
+    q_param = params[:q] || {}
+    page = params[:page]
+    per_page = params[:per_page]
+    @q = BggMechanic.ransack q_param
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @bgg_mechanics = @q.result(distinct: true).page(page).per(per_page).decorate
   end
 
   # GET /bgg_mechanics/1
@@ -13,13 +18,8 @@ class BggMechanicsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bgg_mechanic
-      @bgg_mechanic = BggMechanic.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def bgg_mechanic_params
-      params[:bgg_mechanic]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bgg_mechanic
+    @bgg_mechanic = BggMechanic.find(params[:id]).decorate
+  end
 end

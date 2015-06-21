@@ -13,6 +13,11 @@
 #  index_game_summary_families_on_bgg_family_id    (bgg_family_id)
 #  index_game_summary_families_on_game_summary_id  (game_summary_id)
 #
+# Foreign Keys
+#
+#  fk_rails_37699bd34c  (game_summary_id => game_summaries.id)
+#  fk_rails_e1ce97d6a0  (bgg_family_id => bgg_families.id)
+#
 
 require 'rails_helper'
 

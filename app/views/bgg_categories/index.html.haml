@@ -1,3 +1,5 @@
 %h3 All Categories
 .row
   = render partial: 'bgg_categories/bgg_category_summary', collection: @bgg_categories, as: :bgg_category
+.row
+  = paginate @bgg_categories, theme: 'twitter-bootstrap-3'

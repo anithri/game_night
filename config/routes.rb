@@ -1,7 +1,26 @@
 # == Route Map
 #
 #                             Prefix Verb   URI Pattern                                                      Controller#Action
-#                    bgg_game_search GET    /bgg_game/search(.:format)                                       bgg_game#search
+#                  bgg_game_searches GET    /bgg_game_searches(.:format)                                     bgg_game_searches#index
+#                                    POST   /bgg_game_searches(.:format)                                     bgg_game_searches#create
+#                new_bgg_game_search GET    /bgg_game_searches/new(.:format)                                 bgg_game_searches#new
+#               edit_bgg_game_search GET    /bgg_game_searches/:id/edit(.:format)                            bgg_game_searches#edit
+#                    bgg_game_search GET    /bgg_game_searches/:id(.:format)                                 bgg_game_searches#show
+#                                    PATCH  /bgg_game_searches/:id(.:format)                                 bgg_game_searches#update
+#                                    PUT    /bgg_game_searches/:id(.:format)                                 bgg_game_searches#update
+#                                    DELETE /bgg_game_searches/:id(.:format)                                 bgg_game_searches#destroy
+#                        bgg_artists GET    /bgg_artists(.:format)                                           bgg_artists#index
+#                         bgg_artist GET    /bgg_artists/:id(.:format)                                       bgg_artists#show
+#                     bgg_categories GET    /bgg_categories(.:format)                                        bgg_categories#index
+#                       bgg_category GET    /bgg_categories/:id(.:format)                                    bgg_categories#show
+#                      bgg_designers GET    /bgg_designers(.:format)                                         bgg_designers#index
+#                       bgg_designer GET    /bgg_designers/:id(.:format)                                     bgg_designers#show
+#                       bgg_families GET    /bgg_families(.:format)                                          bgg_families#index
+#                         bgg_family GET    /bgg_families/:id(.:format)                                      bgg_families#show
+#                      bgg_mechanics GET    /bgg_mechanics(.:format)                                         bgg_mechanics#index
+#                       bgg_mechanic GET    /bgg_mechanics/:id(.:format)                                     bgg_mechanics#show
+#                     bgg_publishers GET    /bgg_publishers(.:format)                                        bgg_publishers#index
+#                      bgg_publisher GET    /bgg_publishers/:id(.:format)                                    bgg_publishers#show
 #                     game_libraries GET    /game_libraries(.:format)                                        game_libraries#index
 #                                    POST   /game_libraries(.:format)                                        game_libraries#create
 #                   new_game_library GET    /game_libraries/new(.:format)                                    game_libraries#new
@@ -12,8 +31,6 @@
 #                                    DELETE /game_libraries/:id(.:format)                                    game_libraries#destroy
 #                     game_summaries GET    /game_summaries(.:format)                                        game_summaries#index
 #                       game_summary GET    /game_summaries/:id(.:format)                                    game_summaries#show
-#                     bgg_categories GET    /bgg_categories(.:format)                                        bgg_categories#index
-#                       bgg_category GET    /bgg_categories/:id(.:format)                                    bgg_categories#show
 #         gaming_group_game_sessions GET    /gaming_groups/:gaming_group_id/game_sessions(.:format)          game_sessions#index
 #                                    POST   /gaming_groups/:gaming_group_id/game_sessions(.:format)          game_sessions#create
 #      new_gaming_group_game_session GET    /gaming_groups/:gaming_group_id/game_sessions/new(.:format)      game_sessions#new
@@ -65,12 +82,16 @@
 #
 
 Rails.application.routes.draw do
-  resources :bgg_families
+  resources :bgg_game_searches
+  resources :bgg_artists, only: [:index, :show]
+  resources :bgg_categories, only: [:index, :show]
+  resources :bgg_designers, only: [:index, :show]
+  resources :bgg_families, only: [:index, :show]
   resources :bgg_mechanics, only: [:index, :show]
-  get 'bgg_game/search'
+  resources :bgg_publishers, only: [:index, :show]
+
   resources :game_libraries
   resources :game_summaries, only: [:index, :show]
-  resources :bgg_categories, only: [:index, :show]
 
   resources :gaming_groups do
     resources :game_sessions

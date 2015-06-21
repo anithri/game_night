@@ -14,4 +14,6 @@
 #
 
 class BggArtist < ActiveRecord::Base
+  has_many :game_summary_artists
+  has_many :game_summaries, through: :game_summary_artists
 end

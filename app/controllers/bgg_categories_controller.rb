@@ -4,7 +4,12 @@ class BggCategoriesController < ApplicationController
   # GET /bgg_categories
   # GET /bgg_categories.json
   def index
-    @bgg_categories = BggCategory.order(:name).all
+    q_param = params[:q] || {}
+    page = params[:page]
+    per_page = params[:per_page]
+    @q = BggCategory.ransack q_param
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @bgg_categories = @q.result(distinct: true).page(page).per(per_page).decorate
   end
 
   # GET /bgg_categories/1
@@ -13,13 +18,8 @@ class BggCategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bgg_category
-      @bgg_category = BggCategory.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def bgg_category_params
-      params[:bgg_category]
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bgg_category
+    @bgg_category = BggCategory.find(params[:id]).decorate
+  end
 end

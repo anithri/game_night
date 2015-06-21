@@ -1,0 +1,5 @@
+%h3 All Artists
+.row
+  = render partial: 'bgg_artists/bgg_artist_summary', collection: @bgg_artists, as: :bgg_artist
+.row
+  = paginate @bgg_artists, theme: 'twitter-bootstrap-3'

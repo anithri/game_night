@@ -1,0 +1,6 @@
+%h3 All designers
+.row
+  = render partial: 'bgg_designers/bgg_designer_summary', collection: @bgg_designers, as: :bgg_designer
+.row.center
+  = paginate @bgg_designers, theme: 'twitter-bootstrap-3'
+

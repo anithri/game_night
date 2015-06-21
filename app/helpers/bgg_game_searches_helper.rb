@@ -1,0 +1,2 @@
+module BggGameSearchesHelper
+end
