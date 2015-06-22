@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Player:
+  = @game_library.player
+
+= link_to 'Edit', edit_game_library_path(@game_library)
+\|
+= link_to 'Back', game_libraries_path

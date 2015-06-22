@@ -23,6 +23,9 @@ class Player < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
   belongs_to :player_account
+  has_one :game_library
+
+  after_create :create_game_library
 
   def display_name
     name

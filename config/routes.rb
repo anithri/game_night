@@ -1,6 +1,10 @@
 # == Route Map
 #
 #                             Prefix Verb   URI Pattern                                 Controller#Action
+#                     game_libraries GET    /game_libraries(.:format)                   game_libraries#index
+#                       game_library GET    /game_libraries/:id(.:format)               game_libraries#show
+#                                    PATCH  /game_libraries/:id(.:format)               game_libraries#update
+#                                    PUT    /game_libraries/:id(.:format)               game_libraries#update
 #                  bgg_game_searches GET    /bgg_game_searches(.:format)                bgg_game_searches#index
 #                                    POST   /bgg_game_searches(.:format)                bgg_game_searches#create
 #                new_bgg_game_search GET    /bgg_game_searches/new(.:format)            bgg_game_searches#new
@@ -58,6 +62,7 @@
 #
 
 Rails.application.routes.draw do
+  resources :game_libraries, only: [:index, :show, :update]
   resources :bgg_game_searches
   resources :bgg_artists, only: [:index, :show]
   resources :bgg_categories, only: [:index, :show]
