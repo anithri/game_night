@@ -7,7 +7,7 @@ class BggCategoriesController < ApplicationController
     q_param = params[:q] || {}
     page = params[:page]
     per_page = params[:per_page]
-    @q = BggCategory.ransack q_param
+    @q = policy_scope(BggCategory).ransack q_param
     @q.sorts = 'name asc' if @q.sorts.empty?
     @bgg_categories = @q.result(distinct: true).page(page).per(per_page).decorate
   end
@@ -15,6 +15,7 @@ class BggCategoriesController < ApplicationController
   # GET /bgg_categories/1
   # GET /bgg_categories/1.json
   def show
+    authorize @bgg_category
   end
 
   private

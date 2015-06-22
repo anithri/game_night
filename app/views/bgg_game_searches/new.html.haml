@@ -6,6 +6,6 @@
   game summaries.  More advanced searches will always need to be done on Board
   game geek, and then search here for specific names to do the import with.
 %hr
-= render 'form'
+= render 'form', orig_term: @term
 
 = link_to 'Back', bgg_game_searches_path

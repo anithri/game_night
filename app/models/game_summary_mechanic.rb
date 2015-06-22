@@ -13,11 +13,6 @@
 #  index_game_summary_mechanics_on_bgg_mechanic_id  (bgg_mechanic_id)
 #  index_game_summary_mechanics_on_game_summary_id  (game_summary_id)
 #
-# Foreign Keys
-#
-#  fk_rails_48829f56da  (game_summary_id => game_summaries.id)
-#  fk_rails_d8bb5bc9c5  (bgg_mechanic_id => bgg_mechanics.id)
-#
 
 class GameSummaryMechanic < ActiveRecord::Base
   belongs_to :game_summary

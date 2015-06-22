@@ -13,11 +13,6 @@
 #  index_game_summary_publishers_on_bgg_publisher_id  (bgg_publisher_id)
 #  index_game_summary_publishers_on_game_summary_id   (game_summary_id)
 #
-# Foreign Keys
-#
-#  fk_rails_7528de3d46  (bgg_publisher_id => bgg_publishers.id)
-#  fk_rails_f757fcf76e  (game_summary_id => game_summaries.id)
-#
 
 class GameSummaryPublisher < ActiveRecord::Base
   belongs_to :game_summary

@@ -12,5 +12,9 @@ class GuestUser
   def id
     ''
   end
+
+  def game_library
+
+  end
 end
 

@@ -23,7 +23,8 @@ class Player < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
   belongs_to :player_account
-  has_one :game_library, as: :librarian
-  has_many :group_memberships, class_name: GroupMember
-  has_many :gaming_groups, through: :group_memberships
+
+  def display_name
+    name
+  end
 end

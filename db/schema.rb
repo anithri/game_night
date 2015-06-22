@@ -84,36 +84,6 @@ ActiveRecord::Schema.define(version: 20150615234305) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "game_libraries", force: :cascade do |t|
-    t.integer  "librarian_id"
-    t.string   "librarian_type"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "game_libraries", ["librarian_type", "librarian_id"], name: "index_game_libraries_on_librarian_type_and_librarian_id", using: :btree
-
-  create_table "game_library_items", force: :cascade do |t|
-    t.integer  "game_summary_id"
-    t.integer  "game_library_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "game_library_items", ["game_library_id"], name: "index_game_library_items_on_game_library_id", using: :btree
-  add_index "game_library_items", ["game_summary_id"], name: "index_game_library_items_on_game_summary_id", using: :btree
-
-  create_table "game_sessions", force: :cascade do |t|
-    t.date     "game_date"
-    t.string   "location"
-    t.text     "log"
-    t.uuid     "gaming_group_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "game_sessions", ["gaming_group_id"], name: "index_game_sessions_on_gaming_group_id", using: :btree
-
   create_table "game_summaries", force: :cascade do |t|
     t.string   "name"
     t.integer  "bgg_id"
@@ -188,26 +158,6 @@ ActiveRecord::Schema.define(version: 20150615234305) do
   add_index "game_summary_publishers", ["bgg_publisher_id"], name: "index_game_summary_publishers_on_bgg_publisher_id", using: :btree
   add_index "game_summary_publishers", ["game_summary_id"], name: "index_game_summary_publishers_on_game_summary_id", using: :btree
 
-  create_table "gaming_groups", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "shared_with", default: 0
-    t.string   "slug",                    null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  add_index "gaming_groups", ["slug"], name: "index_gaming_groups_on_slug", unique: true, using: :btree
-
-  create_table "group_members", force: :cascade do |t|
-    t.uuid    "player_id"
-    t.uuid    "gaming_group_id"
-    t.integer "role",            default: 0
-  end
-
-  add_index "group_members", ["gaming_group_id"], name: "index_group_members_on_gaming_group_id", using: :btree
-  add_index "group_members", ["player_id"], name: "index_group_members_on_player_id", using: :btree
-
   create_table "player_accounts", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -266,8 +216,6 @@ ActiveRecord::Schema.define(version: 20150615234305) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
-  add_foreign_key "game_library_items", "game_libraries"
-  add_foreign_key "game_library_items", "game_summaries"
   add_foreign_key "game_summary_artists", "bgg_artists"
   add_foreign_key "game_summary_artists", "game_summaries"
   add_foreign_key "game_summary_categories", "bgg_categories"

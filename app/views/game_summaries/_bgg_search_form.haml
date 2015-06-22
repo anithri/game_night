@@ -1,16 +1,16 @@
-%form
-  %select#autocompleteBggNames{data:{search_url: bgg_game_search_url}, style: 'width: 50%;'}
-
-:coffee
-  $('#autocompleteBggNames').select2
-    placeholder: 'search by name'
-    minimumInputLength: 3
-    ajax:
-      url: $('#autocompleteBggNames').data('searchUrl')
-      dataType: 'json'
-      delay: 250
-      data: (params)->
-        return {q: params.term, page: params.page}
-      processResults: (data, page)->
-        return {results: data.items}
+-#%form
+-#  %select#autocompleteBggNames{data:{search_url: bgg_game_search_url}, style: 'width: 50%;'}
+-#
+-#:coffee
+-#  $('#autocompleteBggNames').select2
+-#    placeholder: 'search by name'
+-#    minimumInputLength: 3
+-#    ajax:
+-#      url: $('#autocompleteBggNames').data('searchUrl')
+-#      dataType: 'json'
+-#      delay: 250
+-#      data: (params)->
+-#        return {q: params.term, page: params.page}
+-#      processResults: (data, page)->
+-#        return {results: data.items}
 

@@ -7,7 +7,7 @@ class BggArtistsController < ApplicationController
     q_param = params[:q] || {}
     page = params[:page]
     per_page = params[:per_page]
-    @q = BggArtist.ransack q_param
+    @q = policy_scope(BggArtist).ransack q_param
     @q.sorts = 'name asc' if @q.sorts.empty?
     @bgg_artists = @q.result(distinct: true).page(page).per(per_page).decorate
   end
@@ -15,6 +15,7 @@ class BggArtistsController < ApplicationController
   # GET /bgg_artists/1
   # GET /bgg_artists/1.json
   def show
+    authorize @bgg_artist
   end
 
   private

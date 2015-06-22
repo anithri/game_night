@@ -13,11 +13,6 @@
 #  index_game_summary_categories_on_bgg_category_id  (bgg_category_id)
 #  index_game_summary_categories_on_game_summary_id  (game_summary_id)
 #
-# Foreign Keys
-#
-#  fk_rails_202c377bb5  (bgg_category_id => bgg_categories.id)
-#  fk_rails_a57a339eeb  (game_summary_id => game_summaries.id)
-#
 
 require 'rails_helper'
 

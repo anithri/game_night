@@ -7,7 +7,7 @@ class BggPublishersController < ApplicationController
     q_param = params[:q] || {}
     page = params[:page]
     per_page = params[:per_page]
-    @q = BggPublisher.ransack q_param
+    @q = policy_scope(BggPublisher).ransack q_param
     @q.sorts = 'name asc' if @q.sorts.empty?
     @bgg_publishers = @q.result(distinct: true).page(page).per(per_page).decorate
   end
@@ -15,6 +15,7 @@ class BggPublishersController < ApplicationController
   # GET /bgg_publishers/1
   # GET /bgg_publishers/1.json
   def show
+    authorize @bgg_publisher
   end
 
   private

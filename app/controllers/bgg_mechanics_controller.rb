@@ -7,7 +7,7 @@ class BggMechanicsController < ApplicationController
     q_param = params[:q] || {}
     page = params[:page]
     per_page = params[:per_page]
-    @q = BggMechanic.ransack q_param
+    @q = policy_scope(BggMechanic).ransack q_param
     @q.sorts = 'name asc' if @q.sorts.empty?
     @bgg_mechanics = @q.result(distinct: true).page(page).per(per_page).decorate
   end
@@ -15,6 +15,7 @@ class BggMechanicsController < ApplicationController
   # GET /bgg_mechanics/1
   # GET /bgg_mechanics/1.json
   def show
+    authorize @bgg_mechanic
   end
 
   private
