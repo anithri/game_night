@@ -1,0 +1,13 @@
+.col-md-3.gameSummaryBlock
+  .panel.panel-warning
+    .panel-heading
+      = link_to game_summary_path(game_summary), class: 'text-white' do
+        = game_summary.name
+        %small= game_summary.year_published
+    .panel-body
+      = image_tag game_summary.thumbnail_url, class: :center
+    .panel-footer
+      .row
+        .col-md-6
+          = render 'game_libraries/add_to_library_button', game_summary: game_summary
+

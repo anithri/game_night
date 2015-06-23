@@ -2,7 +2,7 @@
   = link_to "Family:", bgg_families_path
   = @bgg_family.name
   %small
-    = link_to '[On BGG]', "https://boardgamegeek.com/boardgamefamily/#{@bgg_family.bgg_id}"
+    = link_to '[On BGG]', "https://boardgamegeek.com/boardgamefamily/#{@bgg_family.id}"
 
 .row
   = render @bgg_family.game_summaries

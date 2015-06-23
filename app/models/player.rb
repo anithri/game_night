@@ -25,9 +25,13 @@ class Player < ActiveRecord::Base
   belongs_to :player_account
   has_one :game_library
 
-  after_create :create_game_library
+  after_create :create_default_game_library
 
   def display_name
     name
+  end
+
+  def create_default_game_library
+    create_game_library(name: name, slug: slug)
   end
 end

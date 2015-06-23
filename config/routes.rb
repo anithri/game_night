@@ -1,6 +1,7 @@
 # == Route Map
 #
 #                             Prefix Verb   URI Pattern                                 Controller#Action
+#              add_game_game_library GET    /game_libraries/:id/add_game(.:format)      game_libraries#add_game
 #                     game_libraries GET    /game_libraries(.:format)                   game_libraries#index
 #                       game_library GET    /game_libraries/:id(.:format)               game_libraries#show
 #                                    PATCH  /game_libraries/:id(.:format)               game_libraries#update

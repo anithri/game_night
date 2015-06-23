@@ -11,65 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622012858) do
+ActiveRecord::Schema.define(version: 20150622014744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
   create_table "bgg_artists", force: :cascade do |t|
-    t.integer  "bgg_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "bgg_artists", ["bgg_id"], name: "index_bgg_artists_on_bgg_id", using: :btree
 
   create_table "bgg_categories", force: :cascade do |t|
-    t.integer  "bgg_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "bgg_categories", ["bgg_id"], name: "index_bgg_categories_on_bgg_id", using: :btree
 
   create_table "bgg_designers", force: :cascade do |t|
-    t.integer  "bgg_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "bgg_designers", ["bgg_id"], name: "index_bgg_designers_on_bgg_id", using: :btree
 
   create_table "bgg_families", force: :cascade do |t|
-    t.integer  "bgg_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "bgg_families", ["bgg_id"], name: "index_bgg_families_on_bgg_id", using: :btree
 
   create_table "bgg_mechanics", force: :cascade do |t|
-    t.integer  "bgg_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "bgg_mechanics", ["bgg_id"], name: "index_bgg_mechanics_on_bgg_id", using: :btree
 
   create_table "bgg_publishers", force: :cascade do |t|
-    t.integer  "bgg_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "bgg_publishers", ["bgg_id"], name: "index_bgg_publishers_on_bgg_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -86,15 +68,28 @@ ActiveRecord::Schema.define(version: 20150622012858) do
 
   create_table "game_libraries", force: :cascade do |t|
     t.uuid     "player_id"
+    t.string   "name",       null: false
+    t.string   "slug",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "game_libraries", ["player_id"], name: "index_game_libraries_on_player_id", using: :btree
+  add_index "game_libraries", ["slug"], name: "index_game_libraries_on_slug", unique: true, using: :btree
+
+  create_table "game_library_items", force: :cascade do |t|
+    t.integer  "game_library_id"
+    t.integer  "game_summary_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "game_library_items", ["game_library_id", "game_summary_id"], name: "index_game_library_items_on_game_library_id_and_game_summary_id", unique: true, using: :btree
+  add_index "game_library_items", ["game_library_id"], name: "index_game_library_items_on_game_library_id", using: :btree
+  add_index "game_library_items", ["game_summary_id"], name: "index_game_library_items_on_game_summary_id", using: :btree
 
   create_table "game_summaries", force: :cascade do |t|
     t.string   "name"
-    t.integer  "bgg_id"
     t.string   "thumbnail_url"
     t.string   "image_url"
     t.integer  "year_published"
@@ -224,6 +219,8 @@ ActiveRecord::Schema.define(version: 20150622012858) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
+  add_foreign_key "game_library_items", "game_libraries"
+  add_foreign_key "game_library_items", "game_summaries"
   add_foreign_key "game_summary_artists", "bgg_artists"
   add_foreign_key "game_summary_artists", "game_summaries"
   add_foreign_key "game_summary_categories", "bgg_categories"

@@ -1,6 +1,6 @@
 - if ! current_user.is_a? GuestUser
   %li
-    = link_to 'My Library', '#'
+    = link_to 'My Library', current_user.game_library
 %li.dropdown
   = link_to 'Games', '#', class: 'dropdown-toggle', data: {toggle: 'dropdown'}
   %ul.dropdown-menu

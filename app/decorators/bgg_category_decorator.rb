@@ -2,7 +2,7 @@ class BggCategoryDecorator < Draper::Decorator
   delegate_all
 
   def bgg_url
-    "https://boardgamegeek.com/boardgamecategory/#{object.bgg_id}"
+    "https://boardgamegeek.com/boardgamecategory/#{object.id}"
   end
 
   # Define presentation-specific methods here. Helpers are accessed through

@@ -1,0 +1,13 @@
+.col-md-3.bggSearchResultBlock
+  .panel.panel-info
+    .panel-heading
+      = search_result.name
+      %small= "[#{search_result.year_published}]"
+    .panel-body
+      = link_to '[On BGG]', search_result.bgg_url
+    .panel-footer.clearfix
+      .row
+        .col-md-6
+          = render 'game_libraries/add_to_library_button', game_summary: search_result
+        .col-md-6
+          = render 'game_wishlist/add_to_wishlist_button', game_summary: search_result

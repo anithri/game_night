@@ -2,7 +2,6 @@ class CreateGameSummaries < ActiveRecord::Migration
   def change
     create_table :game_summaries do |t|
       t.string :name
-      t.integer :bgg_id
       t.string :thumbnail_url
       t.string :image_url
       t.integer :year_published

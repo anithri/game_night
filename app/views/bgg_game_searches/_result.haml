@@ -1,10 +1,4 @@
-.col-md-3
-  .panel.panel-info
-    .panel-heading
-      = search_result[:text]
-    .panel-body
-      .row
-        .col-md-6
-          = link_to icon('plus','Library'), '#', class: 'btn btn-success'
-        .col-md-6
-          = link_to icon('plus','Wishlist'), '#', class: 'btn btn-warning'
+- if search_result.is_a? GameSummary
+  = render 'game_summaries/game_summary', game_summary: search_result
+- else
+  = render 'bgg_game_searches/bgg_game_search', search_result: search_result

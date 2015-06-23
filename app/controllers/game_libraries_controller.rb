@@ -17,25 +17,40 @@ class GameLibrariesController < ApplicationController
   # PATCH/PUT /game_libraries/1.json
   def update
     authorize @game_library
+    results = WithGameLibrary::UpdateItems.call(game_library: @game_library, cache: Rails.cache,
+                                                game_summary_ids: game_library_params[:game_summary_ids] )
     respond_to do |format|
-      if @game_library.update(game_library_params)
+      if results.success?
         format.html { redirect_to @game_library, notice: 'Game library was successfully updated.' }
         format.json { render :show, status: :ok, location: @game_library }
       else
-        format.html { render :edit }
-        format.json { render json: @game_library.errors, status: :unprocessable_entity }
+        format.html { redirect_to @game_library, notice: "Could not add item: #{results.error}." }
+        format.json { render json: results.error, status: :unprocessable_entity }
       end
+
     end
+
+
+    #
+    # respond_to do |format|
+    #   if @game_library.update(game_library_params)
+    #     format.html { redirect_to @game_library, notice: 'Game library was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @game_library }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @game_library.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game_library
-      @game_library = GameLibrary.find(params[:id])
+      @game_library = GameLibrary.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_library_params
-      params.require(:game_library).permit(:player_id)
+      params.require(:game_library).permit(:game_summary_ids)
     end
 end

@@ -4,7 +4,6 @@
 #
 #  id             :integer          not null, primary key
 #  name           :string
-#  bgg_id         :integer
 #  thumbnail_url  :string
 #  image_url      :string
 #  year_published :integer
