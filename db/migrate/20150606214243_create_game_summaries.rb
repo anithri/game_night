@@ -9,6 +9,7 @@ class CreateGameSummaries < ActiveRecord::Migration
       t.integer :min_players
       t.integer :playing_time
       t.text :description
+      t.integer :game_library_items_count, default: 0
 
       t.timestamps null: false
     end

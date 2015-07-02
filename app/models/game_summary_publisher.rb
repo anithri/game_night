@@ -16,5 +16,5 @@
 
 class GameSummaryPublisher < ActiveRecord::Base
   belongs_to :game_summary
-  belongs_to :bgg_publisher
+  belongs_to :bgg_publisher, counter_cache: true
 end

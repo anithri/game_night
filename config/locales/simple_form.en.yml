@@ -14,12 +14,12 @@ en:
     labels:
       defaults:
         password: 'Password'
-        game_summary_categories_bgg_category_id_in: 'Category'
-        game_summary_families_bgg_family_id_in: 'Family'
-        game_summary_mechanics_bgg_mechanic_id_in: 'Mechanic'
-        game_summary_artists_bgg_artist_id_in: 'Artist'
-        game_summary_designers_bgg_designer_id_in: 'Designer'
-        game_summary_publishers_bgg_publisher_id_in: 'Publisher'
+        game_summary_categories_bgg_category_id_in_all: 'Category'
+        game_summary_families_bgg_family_id_in_all: 'Family'
+        game_summary_mechanics_bgg_mechanic_id_in_all: 'Mechanic'
+        game_summary_artists_bgg_artist_id_in_all: 'Artist'
+        game_summary_designers_bgg_designer_id_in_all: 'Designer'
+        game_summary_publishers_bgg_publisher_id_in_all: 'Publisher'
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

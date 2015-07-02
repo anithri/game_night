@@ -2,20 +2,23 @@
 #
 # Table name: game_summaries
 #
-#  id             :integer          not null, primary key
-#  name           :string
-#  thumbnail_url  :string
-#  image_url      :string
-#  year_published :integer
-#  max_players    :integer
-#  min_players    :integer
-#  playing_time   :integer
-#  description    :text
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id                       :integer          not null, primary key
+#  name                     :string
+#  thumbnail_url            :string
+#  image_url                :string
+#  year_published           :integer
+#  max_players              :integer
+#  min_players              :integer
+#  playing_time             :integer
+#  description              :text
+#  game_library_items_count :integer          default(0)
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
 #
 
 class GameSummary < ActiveRecord::Base
+
+  has_many :game_library_items
 
   has_many :game_summary_artists
   has_many :bgg_artists, through: :game_summary_artists

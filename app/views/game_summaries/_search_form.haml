@@ -9,13 +9,25 @@
       .row
         .col-md-6
           = f.input :name_cont, required: false
-          = f.input :game_summary_categories_bgg_category_id_in, collection: all_categories_links(), label_method: :name, required: false , input_html: {style: "width: 100%;"}
-          = f.input :game_summary_families_bgg_family_id_in, collection: all_families_links(), label_method: :name, required: false       , input_html: {style: "width: 100%;"}
-          = f.input :game_summary_mechanics_bgg_mechanic_id_in, collection: all_mechanics_links(), label_method: :name, required: false   , input_html: {style: "width: 100%;"}
+          = f.input :game_summary_categories_bgg_category_id_in_all, collection: all_categories_links(), label_method: :name, required: false , input_html: {style: "width: 100%;", multiple: true}
+          = f.input :game_summary_families_bgg_family_id_in_all, collection: all_families_links(), label_method: :name, required: false       , input_html: {style: "width: 100%;", multiple: true}
+          = f.input :game_summary_mechanics_bgg_mechanic_id_in_all, collection: all_mechanics_links(), label_method: :name, required: false   , input_html: {style: "width: 100%;", multiple: true}
         .col-md-6
-          = f.input :game_summary_artists_bgg_artist_id_in, collection: all_artists_links(), label_method: :name, required: false         , input_html: {style: "width: 100%;"}
-          = f.input :game_summary_designers_bgg_designer_id_in, collection: all_designers_links(), label_method: :name, required: false   , input_html: {style: "width: 100%;"}
-          = f.input :game_summary_publishers_bgg_publisher_id_in, collection: all_publishers_links(), label_method: :name, required: false, input_html: {style: "width: 100%;"}
+          = f.input :game_summary_artists_bgg_artist_id_in_all, collection: all_artists_links(), label_method: :name, required: false         , input_html: {style: "width: 100%;", multiple: true}
+          = f.input :game_summary_designers_bgg_designer_id_in_all, collection: all_designers_links(), label_method: :name, required: false   , input_html: {style: "width: 100%;", multiple: true}
+          = f.input :game_summary_publishers_bgg_publisher_id_in_all, collection: all_publishers_links(), label_method: :name, required: false, input_html: {style: "width: 100%;", multiple: true}
+      .row
+        = f.condition_fields do |c|
+          .col-md-2.col-md-offset-3
+            = c.attribute_fields do |a|
+              = a.attribute_select nil, input_html: {class: 'form-control'}
+          .col-md-2
+            = c.predicate_select Hash.new, input_html: {class: 'form-control'}
+          .col-md-2
+            = c.value_fields do |v|
+              = v.text_field :value, input_html: {class: 'form-control'}
+
+
     .panel-footer
       .pull-left
         %button.btn.btn-success{type: :submit}
@@ -26,9 +38,9 @@
         = link_to icon('undo', 'Reset'), game_summaries_path, class: 'btn btn-danger'
       .clearfix
 :coffee
-  $("#q_game_summary_categories_bgg_category_id_in").select2()
-  $("#q_game_summary_families_bgg_family_id_in").select2()
-  $("#q_game_summary_mechanics_bgg_mechanic_id_in").select2()
-  $("#q_game_summary_artists_bgg_artist_id_in").select2()
-  $("#q_game_summary_designers_bgg_designer_id_in").select2()
-  $("#q_game_summary_publishers_bgg_publisher_id_in").select2()
+  $("#q_game_summary_categories_bgg_category_id_in_all").select2()
+  $("#q_game_summary_families_bgg_family_id_in_all").select2()
+  $("#q_game_summary_mechanics_bgg_mechanic_id_in_all").select2()
+  $("#q_game_summary_artists_bgg_artist_id_in_all").select2()
+  $("#q_game_summary_designers_bgg_designer_id_in_all").select2()
+  $("#q_game_summary_publishers_bgg_publisher_id_in_all").select2()

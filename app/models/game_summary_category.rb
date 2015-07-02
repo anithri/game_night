@@ -16,5 +16,5 @@
 
 class GameSummaryCategory < ActiveRecord::Base
   belongs_to :game_summary
-  belongs_to :bgg_category
+  belongs_to :bgg_category, counter_cache: true
 end

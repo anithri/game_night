@@ -1,4 +1,6 @@
-- if current_player.game_library.game_summaries.include? game_summary
+- if current_player.is_a? GuestUser
+  = render 'game_summaries/game_summary_guest', game_summary: game_summary
+- elsif current_player.game_library.game_summaries.include? game_summary
   = render 'game_summaries/game_summary_in_library', game_summary: game_summary
 - else
   = render 'game_summaries/game_summary_not_in_library', game_summary: game_summary

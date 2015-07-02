@@ -16,5 +16,5 @@
 
 class GameSummaryDesigner < ActiveRecord::Base
   belongs_to :game_summary
-  belongs_to :bgg_designer
+  belongs_to :bgg_designer, counter_cache: true
 end

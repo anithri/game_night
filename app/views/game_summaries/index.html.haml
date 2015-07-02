@@ -17,7 +17,7 @@
   - if @game_summaries.empty?
     %em No Records Found
   - else
-    = render @game_summaries
+    = render 'game_summaries/game_summary_grid', game_summaries: @game_summaries
 .row
   = paginate @game_summaries, theme: 'twitter-bootstrap-3'
 

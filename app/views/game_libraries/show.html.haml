@@ -5,7 +5,4 @@
     %b Player:
     = @game_library.player.display_name
 .row
-  - if @game_library.game_summaries.empty?
-    Go forth and play more games!
-  - else
-    = render @game_library.game_summaries
+  = render 'game_summaries/game_summary_grid', game_summaries: @game_library.game_summaries.order(:name)

@@ -17,5 +17,5 @@
 
 class GameLibraryItem < ActiveRecord::Base
   belongs_to :game_library
-  belongs_to :game_summary
+  belongs_to :game_summary, counter_cache: true
 end

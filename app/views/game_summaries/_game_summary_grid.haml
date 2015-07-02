@@ -1,0 +1,6 @@
+- if game_summaries.empty?
+  Go forth and play more games!
+- else
+  - game_summaries.each_slice(4) do |gs_row|
+    .row
+      = render gs_row

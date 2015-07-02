@@ -16,5 +16,5 @@
 
 class GameSummaryFamily < ActiveRecord::Base
   belongs_to :game_summary
-  belongs_to :bgg_family
+  belongs_to :bgg_family, counter_cache: true
 end
