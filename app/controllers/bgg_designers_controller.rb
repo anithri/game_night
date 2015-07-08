@@ -18,6 +18,8 @@ class BggDesignersController < ApplicationController
     authorize @bgg_designer
     results = WithGameSummaries::SearchAndPaginate.call(params:        params,
                                                         initial_scope: @bgg_designer.game_summaries,
+                                                        init_search: { game_summary_designers_bgg_designer_id_in_all: [@bgg_designer.id]}
+
     )
 
     @q              = results.q

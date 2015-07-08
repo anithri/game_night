@@ -2,7 +2,7 @@ class WithGameSummaries::SearchAndPaginate
   include Interactor
 
   def call
-    q_param = params[:q] || default_params
+    q_param = q_params
     page = params[:page]
     per_page = params[:per_page]
     if q_param.has_key?(:per_page_eq)
@@ -27,5 +27,15 @@ class WithGameSummaries::SearchAndPaginate
 
   def default_params
     context.default_params || {}
+  end
+
+  def q_params
+    q = params[:q] || default_params
+    if context.init_search
+      context.init_search.each_pair do |k,v|
+        q[k] ||= v
+      end
+    end
+    q
   end
 end

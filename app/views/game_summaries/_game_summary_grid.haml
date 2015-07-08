@@ -2,11 +2,25 @@
   .col-md-6
     %h1{style: 'margin-top: 0px;'}= grid_title || "Game Summaries"
   .col-md-6
-    .span.pull-right
+    %span.pull-right
       %button.btn.btn-default{onclick:'$("#gameSummarySearchForm").toggle();false'}= icon('search','Search')
-    .span.pull-right
+    %span.pull-right
       %button.btn.btn-default{onclick:'$("#findBggGameSearchForm").toggle();false'}= icon('plus','From BGG')
       &nbsp;
+    %span.pull-left
+      = sort_link @q, :name, "Name", {}, class: 'btn btn-primary'
+    %span.pull-left
+      &nbsp;
+    %span.pull-left
+      = sort_link @q, :game_library_items_count, '# in libraries', {}, class: 'btn btn-primary'
+    %span.pull-left
+      &nbsp;
+    %span.pull-left
+      = sort_link @q, :bgg_game_rank, 'Bgg Rank', {}, class: 'btn btn-primary'
+
+.row
+  .col-md-12
+    .btn-group
 
 #findBggGameSearchForm.row.well{style: 'display: none;'}
   = render 'game_summaries/bgg_search_form'
@@ -23,5 +37,6 @@
         = render gs_row
 .row
   = paginate @game_summaries, theme: 'twitter-bootstrap-3'
+
 
 

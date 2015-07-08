@@ -3,4 +3,4 @@
   = @bgg_artist.name
   %small
     = link_to '[on BGG]', @bgg_artist.bgg_url
-= render 'game_summaries/game_summary_grid', game_summaries: @game_summaries
+= render 'game_summaries/game_summary_grid', game_summaries: @game_summaries, grid_title: 'Game Summaries'

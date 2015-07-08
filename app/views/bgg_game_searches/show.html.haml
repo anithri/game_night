@@ -1,4 +1,4 @@
 %h3
   Searching Names containing: #{@term}
   %small= "[#{@results[:items].size} results]"
-= render 'game_summaries/game_summary_grid', game_summaries: @game_summaries
+= render 'game_summaries/game_summary_grid', game_summaries: @game_summaries, grid_title: 'Game Summaries'

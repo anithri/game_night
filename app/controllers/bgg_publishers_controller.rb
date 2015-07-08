@@ -18,6 +18,7 @@ class BggPublishersController < ApplicationController
     authorize @bgg_publisher
     results = WithGameSummaries::SearchAndPaginate.call(params:        params,
                                                         initial_scope: @bgg_publisher.game_summaries,
+                                                        init_search: { game_summary_summaries_bgg_summary_id_in_all: [@bgg_summary.id]}
     )
 
     @q              = results.q

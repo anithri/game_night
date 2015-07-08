@@ -31,6 +31,7 @@ gem 'interactor-rails'
 gem 'ransack'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'mailgun_rails'
 source 'https://rails-assets.org' do
   gem 'rails-assets-select2-bootstrap'
   gem 'rails-assets-select2'

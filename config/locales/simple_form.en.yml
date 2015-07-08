@@ -20,6 +20,7 @@ en:
         game_summary_artists_bgg_artist_id_in_all: 'Artist'
         game_summary_designers_bgg_designer_id_in_all: 'Designer'
         game_summary_publishers_bgg_publisher_id_in_all: 'Publisher'
+        game_library_items_game_library_id_in_all: 'Library'
     #   user:
     #     new:
     #       email: 'E-mail to sign in.'

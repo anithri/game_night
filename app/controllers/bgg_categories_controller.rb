@@ -18,6 +18,8 @@ class BggCategoriesController < ApplicationController
     authorize @bgg_category
     results = WithGameSummaries::SearchAndPaginate.call(params:        params,
                                                         initial_scope: @bgg_category.game_summaries,
+                                                        init_search: { game_summary_categories_bgg_category_id_in_all: [@bgg_category.id]}
+
     )
 
     @q              = results.q

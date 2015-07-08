@@ -18,6 +18,7 @@ class BggMechanicsController < ApplicationController
     authorize @bgg_mechanic
     results = WithGameSummaries::SearchAndPaginate.call(params:        params,
                                                         initial_scope: @bgg_mechanic.game_summaries,
+                                                        init_search: { game_summary_mechanics_bgg_mechanic_id_in_all: [@bgg_mechanic.id]}
     )
 
     @q              = results.q

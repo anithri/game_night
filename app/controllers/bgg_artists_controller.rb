@@ -18,6 +18,7 @@ class BggArtistsController < ApplicationController
     authorize @bgg_artist
     results = WithGameSummaries::SearchAndPaginate.call(params:        params,
                                                         initial_scope: @bgg_artist.game_summaries,
+                                                        init_search: { game_summary_artists_bgg_artist_id_in_all: [@bgg_artist.id]}
     )
 
     @q              = results.q

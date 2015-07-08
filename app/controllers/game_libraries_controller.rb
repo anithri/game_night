@@ -13,6 +13,7 @@ class GameLibrariesController < ApplicationController
     authorize @game_library
     results =  WithGameSummaries::SearchAndPaginate.call(params:        params,
                                                         initial_scope: @game_library.game_summaries,
+                                                        init_search: { game_library_items_game_library_id_in_all: [@game_library.id] }
     )
 
     @q              = results.q
@@ -24,7 +25,8 @@ class GameLibrariesController < ApplicationController
   def update
     authorize @game_library
     results = WithGameLibrary::UpdateItems.call(game_library: @game_library, cache: Rails.cache,
-                                                game_summary_ids: game_library_params[:game_summary_ids] )
+                                                game_summary_ids: game_library_params[:game_summary_ids],
+    )
     respond_to do |format|
       if results.success?
         format.html { redirect_to @game_library, notice: 'Game library was successfully updated.' }
