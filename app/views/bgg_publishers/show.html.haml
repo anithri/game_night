@@ -3,5 +3,4 @@
   = @bgg_publisher.name
   %small
     = link_to '[on BGG]', @bgg_publisher.bgg_url
-.row
-  = render @bgg_publishers.game_summaries
+= render 'game_summaries/game_summary_grid', game_summaries: @game_summaries

@@ -11,6 +11,7 @@
 #  min_players              :integer
 #  playing_time             :integer
 #  description              :text
+#  bgg_game_rank            :integer          default(100)
 #  game_library_items_count :integer          default(0)
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null

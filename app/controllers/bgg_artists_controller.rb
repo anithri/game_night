@@ -16,11 +16,18 @@ class BggArtistsController < ApplicationController
   # GET /bgg_artists/1.json
   def show
     authorize @bgg_artist
+    results = WithGameSummaries::SearchAndPaginate.call(params:        params,
+                                                        initial_scope: @bgg_artist.game_summaries,
+    )
+
+    @q              = results.q
+    @game_summaries = results.game_summaries
+
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_bgg_artist
-    @bgg_artist = BggArtist.find(params[:id]).decorate
+    @bgg_artist = BggArtist.friendly.find(params[:id]).decorate
   end
 end

@@ -1,5 +1,4 @@
 %h3
   Searching Names containing: #{@term}
   %small= "[#{@results[:items].size} results]"
-.row
-  = render partial: 'bgg_game_searches/result', collection: @results[:items], as: :search_result
+= render 'game_summaries/game_summary_grid', game_summaries: @game_summaries

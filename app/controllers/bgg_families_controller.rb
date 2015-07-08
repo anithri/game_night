@@ -17,11 +17,18 @@ class BggFamiliesController < ApplicationController
   # GET /bgg_families/1.json
   def show
     authorize @bgg_family
+    results = WithGameSummaries::SearchAndPaginate.call(params:        params,
+                                                        initial_scope: @bgg_family.game_summaries,
+    )
+
+    @q              = results.q
+    @game_summaries = results.game_summaries
+
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_bgg_family
-    @bgg_family = BggFamily.find(params[:id]).decorate
+    @bgg_family = BggFamily.friendly.find(params[:id]).decorate
   end
 end

@@ -16,11 +16,18 @@ class BggMechanicsController < ApplicationController
   # GET /bgg_mechanics/1.json
   def show
     authorize @bgg_mechanic
+    results = WithGameSummaries::SearchAndPaginate.call(params:        params,
+                                                        initial_scope: @bgg_mechanic.game_summaries,
+    )
+
+    @q              = results.q
+    @game_summaries = results.game_summaries
+
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_bgg_mechanic
-    @bgg_mechanic = BggMechanic.find(params[:id]).decorate
+    @bgg_mechanic = BggMechanic.friendly.find(params[:id]).decorate
   end
 end

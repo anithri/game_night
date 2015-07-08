@@ -1,5 +1,12 @@
 module GameSummariesHelper
 
+  def rank_badge(gs)
+    return '' if gs.bgg_game_rank > 50
+    content_tag :span, class: 'badge' do
+      "BGG ##{gs.bgg_game_rank}"
+    end
+  end
+
   def all_categories_links
     Rails.cache.fetch 'all_categories_links', expires_in: 1.hour do
       BggCategory.all

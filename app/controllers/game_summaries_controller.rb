@@ -3,12 +3,12 @@ class GameSummariesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    q_param = params[:q] || {}
-    page = params[:page]
-    per_page = params[:per_page]
-    @q = policy_scope(GameSummary).ransack q_param
-    @q.sorts = 'name asc' if @q.sorts.empty?
-    @game_summaries = @q.result(distinct: true).page(page).per(per_page)
+    results = WithGameSummaries::SearchAndPaginate.call(params:        params,
+                                                        initial_scope: policy_scope(GameSummary),
+    )
+
+    @q              = results.q
+    @game_summaries = results.game_summaries
   end
 
   # GET /games/1

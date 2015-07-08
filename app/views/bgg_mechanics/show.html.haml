@@ -4,7 +4,6 @@
   %small
     = link_to '[On BGG]', "https://boardgamegeek.com/boardgamemechanic/#{@bgg_mechanic.id}"
 
-.row
-  = render @bgg_mechanic.game_summaries
+= render 'game_summaries/game_summary_grid', game_summaries: @game_summaries
 
 

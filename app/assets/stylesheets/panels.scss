@@ -1,22 +1,38 @@
-$panel-light-bg: #c9e4ca;
-$panel-light-border: darken(adjust_hue($panel-light-bg, 10),5%) !default;
-$panel-light-text: $brand-primary;
-
-$panel-medium-bg: #87bba2;
-$panel-medium-border: darken(adjust_hue($panel-medium-bg, 10),5%) !default;
-$panel-medium-text: $navbar-inverse-link-color;
-
-$panel-dark-bg: #55828b;
-$panel-dark-border: lighten(adjust_hue($panel-dark-bg, 10),5%) !default;
-$panel-dark-text: $navbar-inverse-link-color;
-
-.panel-light {
-  @include panel-variant($panel-light-border, $panel-light-text, $panel-light-bg, $panel-light-border);
+//$panel-gsInLibrary-bg: #c9e4ca;
+//$panel-gsInLibrary-border: darken(adjust_hue($panel-gsInLibrary-bg, 10),5%) !default;
+//$panel-gsInLibrary-text: $brand-primary;
+//
+//$panel-gsNotInLibrary-bg: #87bba2;
+//$panel-gsNotInLibrary-border: darken(adjust_hue($panel-gsNotInLibrary-bg, 10),5%) !default;
+//$panel-gsNotInLibrary-text: $navbar-inverse-link-color;
+//
+//$panel-gsGuest-bg: #55828b;
+//$panel-gsGuest-border: lighten(adjust_hue($panel-gsGuest-bg, 10),5%) !default;
+//$panel-gsGuest-text: $navbar-inverse-link-color;
+//
+.panel-gsInLibrary {
+  @extend .panel-primary;
+  .panel-heading {
+    a {
+      color: white;
+    }
+    a:visited {
+      color: white;
+    }
+  }
 }
-.panel-medium {
-  @include panel-variant($panel-medium-border, $panel-medium-text, $panel-medium-bg, $panel-medium-border);
+.panel-gsNotInLibrary {
+  @extend .panel-success;
+  .panel-heading {
+    a {
+      color: black;
+    }
+    a:visited {
+      color: black;
+    }
+  }
 }
-.panel-dark {
-  @include panel-variant($panel-dark-border, $panel-dark-text, $panel-dark-bg, $panel-dark-border);
-}
-
+//.panel-gsGuest {
+//  @include panel-variant($panel-gsGuest-border, $panel-gsGuest-text, $panel-gsGuest-bg, $panel-gsGuest-border);
+//}
+//

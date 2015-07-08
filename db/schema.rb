@@ -19,45 +19,63 @@ ActiveRecord::Schema.define(version: 20150622014744) do
 
   create_table "bgg_artists", force: :cascade do |t|
     t.string   "name"
+    t.string   "slug"
     t.integer  "game_summary_artists_count", default: 0
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end
 
+  add_index "bgg_artists", ["slug"], name: "index_bgg_artists_on_slug", unique: true, using: :btree
+
   create_table "bgg_categories", force: :cascade do |t|
     t.string   "name"
+    t.string   "slug"
     t.integer  "game_summary_categories_count", default: 0
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
 
+  add_index "bgg_categories", ["slug"], name: "index_bgg_categories_on_slug", unique: true, using: :btree
+
   create_table "bgg_designers", force: :cascade do |t|
     t.string   "name"
+    t.string   "slug"
     t.integer  "game_summary_designers_count", default: 0
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
   end
 
+  add_index "bgg_designers", ["slug"], name: "index_bgg_designers_on_slug", unique: true, using: :btree
+
   create_table "bgg_families", force: :cascade do |t|
     t.string   "name"
+    t.string   "slug"
     t.integer  "game_summary_families_count", default: 0
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
   end
 
+  add_index "bgg_families", ["slug"], name: "index_bgg_families_on_slug", unique: true, using: :btree
+
   create_table "bgg_mechanics", force: :cascade do |t|
     t.string   "name"
+    t.string   "slug"
     t.integer  "game_summary_mechanics_count", default: 0
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
   end
 
+  add_index "bgg_mechanics", ["slug"], name: "index_bgg_mechanics_on_slug", unique: true, using: :btree
+
   create_table "bgg_publishers", force: :cascade do |t|
     t.string   "name"
+    t.string   "slug"
     t.integer  "game_summary_publishers_count", default: 0
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
   end
+
+  add_index "bgg_publishers", ["slug"], name: "index_bgg_publishers_on_slug", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -103,9 +121,10 @@ ActiveRecord::Schema.define(version: 20150622014744) do
     t.integer  "min_players"
     t.integer  "playing_time"
     t.text     "description"
+    t.integer  "bgg_game_rank",            default: 100
     t.integer  "game_library_items_count", default: 0
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "game_summary_artists", force: :cascade do |t|

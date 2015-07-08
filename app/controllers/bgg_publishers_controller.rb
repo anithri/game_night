@@ -16,11 +16,18 @@ class BggPublishersController < ApplicationController
   # GET /bgg_publishers/1.json
   def show
     authorize @bgg_publisher
+    results = WithGameSummaries::SearchAndPaginate.call(params:        params,
+                                                        initial_scope: @bgg_publisher.game_summaries,
+    )
+
+    @q              = results.q
+    @game_summaries = results.game_summaries
+
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_bgg_publisher
-    @bgg_publisher = BggPublisher.find(params[:id]).decorate
+    @bgg_publisher = BggPublisher.includes(:game_summaries).friendly.find(params[:id]).decorate
   end
 end

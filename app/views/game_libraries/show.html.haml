@@ -1,8 +1,7 @@
 %p#notice= notice
 
 .row
-  %p
-    %b Player:
-    = @game_library.player.display_name
 .row
-  = render 'game_summaries/game_summary_grid', game_summaries: @game_library.game_summaries.order(:name)
+  = render 'game_summaries/game_summary_grid', game_summaries: @game_summaries,
+                                               grid_title: "Player: #{@game_library.player.display_name}"
+

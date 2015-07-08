@@ -1,11 +1,15 @@
 .col-md-3.gameSummaryBlock
-  .panel.panel-success
+  .panel.panel-gsInLibrary
     .panel-heading
       = link_to game_summary_path(game_summary), class: 'text-white' do
         = game_summary.name
         %small= game_summary.year_published
     .panel-body
-      = image_tag game_summary.thumbnail_url, class: :center
+      .row
+        .col-md-3
+          = rank_badge(game_summary)
+        .col-md-9
+          = image_tag game_summary.thumbnail_url, class: :center
     .panel-footer
       = render 'game_libraries/rm_from_library_button', game_summary: game_summary
 

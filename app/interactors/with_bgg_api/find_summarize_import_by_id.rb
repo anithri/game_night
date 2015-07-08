@@ -11,7 +11,7 @@ class WithBggApi::FindSummarizeImportById
       context.game_summary = bgg_summary_results.game_summary
       context.game_summary.save
     else
-      context.fail error: bgg_game_results.error
+      context.fail! error: bgg_game_results.error
     end
   end
 
