@@ -6,13 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Environment variables (ENV['...']) can be set in the file .env file.
-player_account = PlayerAccount.create(confirmed_at: Date.today,
-                                      email:        "#{ENV['PLAYER_ACCOUNT_SEED_EMAIL']}",
-                                      password:     "#{ENV['PLAYER_ACCOUNT_SEED_PASSWORD']}",
+scott = PlayerAccount.create(confirmed_at:      Date.today,
+                             email:             "#{ENV['PLAYER_ACCOUNT_SEED_EMAIL']}",
+                             password:          "#{ENV['PLAYER_ACCOUNT_SEED_PASSWORD']}",
+                             player_attributes: {name: 'Anithri'}
 )
-
-player_account.player.name.update(name: 'Anithri')
-player_account.player.game_library.update(name: 'Scott\'s Stash')
+scott.player.update(name: 'Scott')
+scott.player.game_library.update(name: 'Scott\'s Stash')
 [
     175155, 125153, 166384, 169427, 171623, 107529, 164775, 178550, 179572, 164153,
     123045, 176564, 150376, 176189, 162591, 163354, 169794, 124742, 163968, 132531,
@@ -21,16 +21,16 @@ player_account.player.game_library.update(name: 'Scott\'s Stash')
     130486, 174785, 175621, 72125, 103885, 68448, 115746, 155068, 120677,
     138161, 132531, 28143, 148228, 154203, 161417, 2338, 164153, 110327, 72125,
     139991, 123540, 36218, 70919, 143741, 127994, 125678, 102652, 150658, 28143, 161417,
-    138161, 100423, 30549, 132531
+    138161, 100423, 30549, 132531, 1465
 ].uniq.each do |bgg_id|
   WithBggApi::FindSummarizeImportById.call(cache: Rails.cache, bgg_id: bgg_id)
 end
 
 
-scotts_games = [139991, 123540, 36218, 70919, 143741, 127994, 125678, 102652, 150658, 28143, 161417,
-                138161, 100423, 30549, 132531]
+scotts_games = [139991, 123540, 36218, 70919, 143741, 127994, 125678, 102652, 150658,
+                28143, 161417, 138161, 100423, 30549, 132531, 1465]
 
-player_account.player.game_library.game_summary_ids = scotts_games
-player_account.player.save
+scott.player.game_library.game_summary_ids = scotts_games
+scott.player.save
 
 

@@ -11,7 +11,7 @@
 //$panel-gsGuest-text: $navbar-inverse-link-color;
 //
 .panel-gsInLibrary {
-  @extend .panel-primary;
+  @extend .panel-success;
   .panel-heading {
     a {
       color: white;
@@ -22,15 +22,19 @@
   }
 }
 .panel-gsNotInLibrary {
-  @extend .panel-success;
+  @extend .panel-primary;
   .panel-heading {
     a {
-      color: black;
+      color: white;
     }
     a:visited {
-      color: black;
+      color: white;
     }
   }
+}
+
+.panel-gameLibrary {
+  @extend .panel-primary;
 }
 //.panel-gsGuest {
 //  @include panel-variant($panel-gsGuest-border, $panel-gsGuest-text, $panel-gsGuest-bg, $panel-gsGuest-border);

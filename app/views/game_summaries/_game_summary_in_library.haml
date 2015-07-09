@@ -8,6 +8,8 @@
       .row
         .col-md-3
           = rank_badge(game_summary)
+          = library_count(game_summary)
+
         .col-md-9
           = image_tag game_summary.thumbnail_url, class: :center
     .panel-footer

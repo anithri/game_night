@@ -32,6 +32,6 @@ class Player < ActiveRecord::Base
   end
 
   def create_default_game_library
-    create_game_library(name: name, slug: slug)
+    create_game_library(name:"#{name}'s Library")
   end
 end

@@ -7,6 +7,13 @@ module GameSummariesHelper
     end
   end
 
+  def library_count(gs)
+    return '' if gs.game_library_items_count == 0
+    content_tag :span, class: 'badge' do
+      "In #{gs.game_library_items_count} #{'Lib'.pluralize(gs.game_library_items_count)}"
+    end
+  end
+
   def all_categories_links
     Rails.cache.fetch 'all_categories_links', expires_in: 1.hour do
       BggCategory.order(:name).all

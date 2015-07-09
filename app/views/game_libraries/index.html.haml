@@ -1,21 +1,5 @@
-%h1 Listing game_libraries
 
-%table
-  %thead
-    %tr
-      %th Player
-      %th
-      %th
-      %th
+%h1 Game Libraries
 
-  %tbody
-    - @game_libraries.each do |game_library|
-      %tr
-        %td= game_library.player
-        %td= link_to 'Show', game_library
-        %td= link_to 'Edit', edit_game_library_path(game_library)
-        %td= link_to 'Destroy', game_library, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Game library', new_game_library_path
+.row
+  = render @game_libraries

@@ -23,7 +23,7 @@
     .btn-group
 
 #findBggGameSearchForm.row.well{style: 'display: none;'}
-  = render 'game_summaries/bgg_search_form'
+  = render 'bgg_game_searches/form', orig_term: nil
 
 #gameSummarySearchForm.row.well{style: 'display: none;'}
   = render 'game_summaries/search_form'

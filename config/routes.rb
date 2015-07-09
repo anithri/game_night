@@ -75,7 +75,7 @@ Rails.application.routes.draw do
   resources :game_summaries, only: [:index, :show]
   resources :players
 
-  devise_for :player_accounts
+  devise_for :player_accounts, controllers: {registrations: 'registrations'}
   get '/creative_commons', to: 'visitors#creative_commons'
   get '/license', to: 'visitors#mit_license'
   get '/mit-license', to: 'visitors#mit_license'

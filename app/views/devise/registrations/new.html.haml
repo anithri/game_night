@@ -1,7 +1,12 @@
 .authform
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form'}) do |f|
-    %h3 Sign up
+    %h3 Sign up Now
     = devise_error_messages!
+
+    .form-group
+      = f.fields_for resource.player do |fp|
+        = fp.label :name, label: 'Username'
+        = fp.text_field :name, class: 'form-control'
     .form-group
       = f.label :email
       = f.email_field :email, :autofocus => true, class: 'form-control'

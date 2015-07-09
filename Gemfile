@@ -32,6 +32,8 @@ gem 'ransack'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'mailgun_rails'
+gem 'ffaker'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-select2-bootstrap'
   gem 'rails-assets-select2'
@@ -59,7 +61,6 @@ end
 
 group :development, :test do
   gem 'factory_girl_rails'
-  gem 'ffaker'
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'

@@ -3,6 +3,12 @@
     Edit #{resource_name.to_s.humanize}
   = simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'} do |f|
     = devise_error_messages!
+    - raise 'oops'
+
+    = f.fields_for :player do |fp|
+      .form-group
+        = fp.label :name, label: 'Username'
+        = fp.text_field :name, class: 'form-control'
     .form-group
       = f.input :email
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?

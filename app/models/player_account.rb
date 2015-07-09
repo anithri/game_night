@@ -32,11 +32,10 @@ class PlayerAccount < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_one :player, inverse_of: :player_account
 
-  has_one :player
-  accepts_nested_attributes_for :player, allow_destroy: true
+  accepts_nested_attributes_for :player,
+                                allow_destroy: true,
+                                reject_if: proc { |attributes| attributes[:name].blank? }
 
-  def create_player
-    Player.new(name: name, player_account: self)
-  end
 end
