@@ -77,6 +77,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.cache_store = :dalli_store, ENV['MEMCACHE_PORT_11211_TCP_ADDR'], {pool_size: 5}
+  config.cache_store = :dalli_store, ENV['MEMCACHE_PORT_11211_TCP_ADDR']
 
 end
