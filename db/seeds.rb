@@ -10,7 +10,8 @@ player_account = PlayerAccount.create(confirmed_at: Date.today,
                                       email:        "#{ENV['PLAYER_ACCOUNT_SEED_EMAIL']}",
                                       password:     "#{ENV['PLAYER_ACCOUNT_SEED_PASSWORD']}",
 )
-player_account.player.update(name: 'Scott M Parrish')
+
+player_account.player.name.update(name: 'Anithri')
 player_account.player.game_library.update(name: 'Scott\'s Stash')
 [
     175155, 125153, 166384, 169427, 171623, 107529, 164775, 178550, 179572, 164153,

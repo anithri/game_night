@@ -33,9 +33,8 @@ class PlayerAccount < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  after_create :create_player
-
   has_one :player
+  accepts_nested_attributes_for :player, allow_destroy: true
 
   def create_player
     Player.new(name: name, player_account: self)
