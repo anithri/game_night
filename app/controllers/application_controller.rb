@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, :except => :index, unless: :devise_controller?
   #after_action :verify_policy_scoped, :only => :index
 
+  #skip layout for ajax requests
+  layout proc{|c| c.request.xhr? ? false : "application" }
+
   protect_from_forgery with: :exception
 
   def current_player

@@ -1,10 +1,10 @@
 class GameLibrariesController < ApplicationController
   before_action :set_game_library, only: [:show, :edit, :update, :destroy]
-
+  respond_to :html,:js,:json
   # GET /game_libraries
   # GET /game_libraries.json
   def index
-    @game_libraries = policy_scope(GameLibrary).all
+    @game_libraries = policy_scope(GameLibrary).includes(:game_summaries).all
   end
 
   # GET /game_libraries/1
@@ -31,24 +31,12 @@ class GameLibrariesController < ApplicationController
       if results.success?
         format.html { redirect_to @game_library, notice: 'Game library was successfully updated.' }
         format.json { render :show, status: :ok, location: @game_library }
+        format.js {flash[:notice] = results.notice}
       else
         format.html { redirect_to @game_library, notice: "Could not add item: #{results.error}." }
-        format.json { render json: results.error, status: :unprocessable_entity }
+        format.json { render json: results.error, layout: false, status: :unprocessable_entity }
       end
-
     end
-
-
-    #
-    # respond_to do |format|
-    #   if @game_library.update(game_library_params)
-    #     format.html { redirect_to @game_library, notice: 'Game library was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @game_library }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @game_library.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   private
