@@ -1,5 +1,6 @@
-PATH
-  remote: ../bgg
+GIT
+  remote: https://github.com/anithri/bgg.git
+  revision: 4eca9b5eeded10917bb3da66c4383a078b7e226a
   specs:
     bgg (1.0.2)
       httparty (~> 0.8.3)
