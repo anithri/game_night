@@ -12,14 +12,6 @@ player_account = PlayerAccount.create(confirmed_at: Date.today,
                                       password:     "#{ENV['PLAYER_ACCOUNT_SEED_PASSWORD']}")
 player_account.player.update(name: 'Scott M Parrish')
 
-50.times do
-  pa = PlayerAccount.create(confirmed_at: Date.today,
-                            email:        FFaker::Internet.email,
-                            password:     FFaker::Internet.password)
-  pa.player.update(name: FFaker::Name.name)
-
-end
-
 [
     175155, 125153, 166384, 169427, 171623, 107529, 164775, 178550, 179572, 164153,
     123045, 176564, 150376, 176189, 162591, 163354, 169794, 124742, 163968, 132531,
@@ -31,12 +23,6 @@ end
     138161, 100423, 30549, 132531
 ].uniq.each do |bgg_id|
   WithBggApi::FindSummarizeImportById.call(cache: Rails.cache, bgg_id: bgg_id)
-end
-games = GameSummary.all.to_a
-GameLibrary.all.to_a.each do |gl|
-  gl.game_summaries = games.sample(5 + rand(20))
-  gl.save
-
 end
 
 scotts_games = [139991, 123540, 36218, 70919, 143741, 127994, 125678, 102652, 150658, 28143, 161417,
