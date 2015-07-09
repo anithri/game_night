@@ -9,7 +9,6 @@
 player_account = PlayerAccount.create(confirmed_at: Date.today,
                                       email:        "#{ENV['PLAYER_ACCOUNT_SEED_EMAIL']}",
                                       password:     "#{ENV['PLAYER_ACCOUNT_SEED_PASSWORD']}",
-                                      library_name: 'Scott\'s Stash',
 )
 player_account.player.update(name: 'Scott M Parrish')
 player_account.player.game_library.update(name: 'Scott\'s Stash')
