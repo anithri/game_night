@@ -9,9 +9,11 @@
 require 'ffaker'
 player_account = PlayerAccount.create(confirmed_at: Date.today,
                                       email:        "#{ENV['PLAYER_ACCOUNT_SEED_EMAIL']}",
-                                      password:     "#{ENV['PLAYER_ACCOUNT_SEED_PASSWORD']}")
+                                      password:     "#{ENV['PLAYER_ACCOUNT_SEED_PASSWORD']}",
+                                      library_name: 'Scott\'s Stash',
+)
 player_account.player.update(name: 'Scott M Parrish')
-
+player_account.player.game_library.update(name: 'Scott\'s Stash')
 [
     175155, 125153, 166384, 169427, 171623, 107529, 164775, 178550, 179572, 164153,
     123045, 176564, 150376, 176189, 162591, 163354, 169794, 124742, 163968, 132531,

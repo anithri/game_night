@@ -38,6 +38,6 @@ class PlayerAccount < ActiveRecord::Base
   has_one :player
 
   def create_player
-    Player.new(name: FFaker::InternetSE.slug, player_account: self)
+    Player.new(name: name, player_account: self)
   end
 end
