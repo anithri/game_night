@@ -78,5 +78,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.cache_store = :dalli_store, ENV['MEMCACHE_PORT_11211_TCP_ADDR']
+  Rails.application.routes.default_url_options[:host] = 'ourgamenight.rocks'
 
 end

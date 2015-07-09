@@ -8,7 +8,7 @@
       %button.btn.btn-default{onclick:'$("#findBggGameSearchForm").toggle();false'}= icon('plus','From BGG')
       &nbsp;
     %span.pull-left
-      = sort_link @q, :name, "Name", {}, class: 'btn btn-primary'
+      = sort_link @q, :name, "Name", {default_order: :desc}, class: 'btn btn-primary'
     %span.pull-left
       &nbsp;
     %span.pull-left
