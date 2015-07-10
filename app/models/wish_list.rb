@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: game_libraries
+# Table name: wish_lists
 #
 #  id         :integer          not null, primary key
 #  player_id  :uuid
@@ -11,15 +11,15 @@
 #
 # Indexes
 #
-#  index_game_libraries_on_player_id  (player_id)
-#  index_game_libraries_on_slug       (slug) UNIQUE
+#  index_wish_lists_on_player_id  (player_id)
+#  index_wish_lists_on_slug       (slug) UNIQUE
 #
 
-class GameLibrary < ActiveRecord::Base
-
+class WishList < ActiveRecord::Base
+  has_paper_trail
   belongs_to :player
-  has_many :game_library_items
-  has_many :game_summaries, through: :game_library_items
+  has_many :wish_list_items
+  has_many :game_summaries, through: :wish_list_items
 
   extend FriendlyId
   friendly_id :name, use: :slugged

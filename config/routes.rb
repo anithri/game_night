@@ -63,6 +63,7 @@
 #
 
 Rails.application.routes.draw do
+  resources :wish_lists, only: [:index, :show, :update]
   resources :game_libraries, only: [:index, :show, :update]
   resources :bgg_game_searches
   resources :bgg_artists, only: [:index, :show]

@@ -1,0 +1,7 @@
+.col-md-3
+  .panel.panel-wishList
+    .panel-heading
+      = link_to wish_list.name, wish_list_path(wish_list)
+    .panel-body
+      %p
+        = "# of Games: #{wish_list.wish_list_items.count}"

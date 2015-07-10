@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622014744) do
+ActiveRecord::Schema.define(version: 20150710203012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20150622014744) do
     t.integer  "game_library_items_count", default: 0
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.integer  "wish_list_items_count",    default: 0
   end
 
   create_table "game_summary_artists", force: :cascade do |t|
@@ -245,6 +246,28 @@ ActiveRecord::Schema.define(version: 20150622014744) do
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
+  create_table "wish_list_items", force: :cascade do |t|
+    t.integer  "wish_list_id"
+    t.integer  "game_summary_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "wish_list_items", ["game_summary_id"], name: "index_wish_list_items_on_game_summary_id", using: :btree
+  add_index "wish_list_items", ["wish_list_id", "game_summary_id"], name: "index_wish_list_items_on_wish_list_id_and_game_summary_id", unique: true, using: :btree
+  add_index "wish_list_items", ["wish_list_id"], name: "index_wish_list_items_on_wish_list_id", using: :btree
+
+  create_table "wish_lists", force: :cascade do |t|
+    t.uuid     "player_id"
+    t.string   "name",       null: false
+    t.string   "slug",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "wish_lists", ["player_id"], name: "index_wish_lists_on_player_id", using: :btree
+  add_index "wish_lists", ["slug"], name: "index_wish_lists_on_slug", unique: true, using: :btree
+
   add_foreign_key "game_library_items", "game_libraries"
   add_foreign_key "game_library_items", "game_summaries"
   add_foreign_key "game_summary_artists", "bgg_artists"
@@ -259,4 +282,6 @@ ActiveRecord::Schema.define(version: 20150622014744) do
   add_foreign_key "game_summary_mechanics", "game_summaries"
   add_foreign_key "game_summary_publishers", "bgg_publishers"
   add_foreign_key "game_summary_publishers", "game_summaries"
+  add_foreign_key "wish_list_items", "game_summaries"
+  add_foreign_key "wish_list_items", "wish_lists"
 end

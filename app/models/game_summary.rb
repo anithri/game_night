@@ -15,6 +15,7 @@
 #  game_library_items_count :integer          default(0)
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
+#  wish_list_items_count    :integer          default(0)
 #
 
 class GameSummary < ActiveRecord::Base

@@ -1,7 +1,7 @@
 .col-md-3.gameSummaryBlock
-  .panel.panel-gsNotInLibrary
+  .panel.panel-wishList
     .panel-heading
-      = link_to game_summary_path(game_summary) do
+      = link_to game_summary_path(game_summary), class: 'text-white' do
         = game_summary.name
         %small= game_summary.year_published
     .panel-body
@@ -17,4 +17,5 @@
         .col-md-6
           = render 'game_libraries/add_to_library_button', game_summary: game_summary
         .col-md-6
-          = render 'wish_lists/add_to_wish_list_button', game_summary: game_summary
+          = render 'wish_lists/rm_from_wish_list_button', game_summary: game_summary
+

@@ -1,0 +1,6 @@
+%p#notice= notice
+
+.row
+  = render 'game_summaries/game_summary_grid', game_summaries: @game_summaries,
+                                               grid_title: "Player: #{@wish_list.player.display_name}"
+

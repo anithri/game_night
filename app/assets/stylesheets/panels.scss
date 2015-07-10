@@ -36,6 +36,30 @@
 .panel-gameLibrary {
   @extend .panel-primary;
 }
+
+.panel-wishList {
+  @extend .panel-info;
+  .panel-heading {
+    a {
+      color: white;
+    }
+    a:visited {
+      color: white;
+    }
+  }
+}
+.panel-gsInWishList {
+  @extend .panel-warning;
+  .panel-heading {
+    a {
+      color: white;
+    }
+    a:visited {
+      color: white;
+    }
+  }
+}
+
 //.panel-gsGuest {
 //  @include panel-variant($panel-gsGuest-border, $panel-gsGuest-text, $panel-gsGuest-bg, $panel-gsGuest-border);
 //}

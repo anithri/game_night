@@ -24,14 +24,16 @@ class Player < ActiveRecord::Base
   friendly_id :name, use: :slugged
   belongs_to :player_account
   has_one :game_library
+  has_one :wish_list
 
-  after_create :create_default_game_library
+  after_create :create_default_library_and_wish_list
 
   def display_name
     name
   end
 
-  def create_default_game_library
-    create_game_library(name:"#{name}'s Library")
+  def create_default_library_and_wish_list
+    create_game_library(name: "#{name}'s Library")
+    create_wish_list(name: "#{name}'s Wish List")
   end
 end
