@@ -3,20 +3,22 @@
     %h1{style: 'margin-top: 0px;'}= grid_title || "Game Summaries"
   .col-md-6
     %span.pull-right
-      %button.btn.btn-default{onclick:'$("#gameSummarySearchForm").toggle();false'}= icon('search','Search')
+      %button.btn.btn-default.btn-sm{onclick:'$("#gameSummarySearchForm").toggle();false'}= icon('search','Search')
     %span.pull-right
-      %button.btn.btn-default{onclick:'$("#findBggGameSearchForm").toggle();false'}= icon('plus','From BGG')
+      %button.btn.btn-default.btn-sm{onclick:'$("#findBggGameSearchForm").toggle();false'}= icon('plus','From BGG')
       &nbsp;
     %span.pull-left
-      = sort_link @q, :name, "Name", {default_order: :desc}, class: 'btn btn-primary'
-    %span.pull-left
-      &nbsp;
-    %span.pull-left
-      = sort_link @q, :game_library_items_count, '# in libraries', {}, class: 'btn btn-primary'
+      = sort_link @q, :name, "Name", {default_order: :desc}, class: 'btn btn-sm btn-primary'
     %span.pull-left
       &nbsp;
     %span.pull-left
-      = sort_link @q, :bgg_game_rank, 'Bgg Rank', {}, class: 'btn btn-primary'
+      = sort_link @q, :game_library_items_count, '# in libraries', {default_order: :desc}, class: 'btn btn-sm btn-primary'
+    %span.pull-left
+      = sort_link @q, :wish_list_items_count, '# in Wish Lists', {default_order: :desc}, class: 'btn btn-sm btn-primary'
+    %span.pull-left
+      &nbsp;
+    %span.pull-left
+      = sort_link @q, :bgg_game_rank, 'Bgg Rank', {}, class: 'btn btn-sm btn-primary'
 
 .row
   .col-md-12

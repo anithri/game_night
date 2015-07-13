@@ -1,5 +1,5 @@
 # == Schema Information
-#
+ #
 # Table name: game_libraries
 #
 #  id         :integer          not null, primary key

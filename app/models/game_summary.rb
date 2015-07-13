@@ -21,6 +21,7 @@
 class GameSummary < ActiveRecord::Base
 
   has_many :game_library_items
+  has_many :wish_list_items
 
   has_many :game_summary_artists
   has_many :bgg_artists, through: :game_summary_artists

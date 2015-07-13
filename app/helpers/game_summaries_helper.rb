@@ -14,6 +14,13 @@ module GameSummariesHelper
     end
   end
 
+  def wish_list_count(gs)
+    return '' if gs.wish_list_items_count == 0
+    content_tag :span, class: 'badge' do
+      "In #{gs.wish_list_items_count} #{'Wish List'.pluralize(gs.wish_list_items_count)}"
+    end
+  end
+
   def all_categories_links
     Rails.cache.fetch 'all_categories_links', expires_in: 1.hour do
       BggCategory.order(:name).all

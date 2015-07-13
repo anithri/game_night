@@ -13,6 +13,7 @@
 .panel-gsInLibrary {
   @extend .panel-success;
   .panel-heading {
+    line-height: normal;
     a {
       color: white;
     }
@@ -24,6 +25,7 @@
 .panel-gsNotInLibrary {
   @extend .panel-primary;
   .panel-heading {
+    line-height: normal;
     a {
       color: white;
     }
@@ -35,11 +37,21 @@
 
 .panel-gameLibrary {
   @extend .panel-primary;
+  .panel-heading {
+    line-height: normal;
+    a {
+      color: white;
+    }
+    a:visited {
+      color: white;
+    }
+  }
 }
 
 .panel-wishList {
   @extend .panel-info;
   .panel-heading {
+    line-height: normal;
     a {
       color: white;
     }
@@ -50,7 +62,11 @@
 }
 .panel-gsInWishList {
   @extend .panel-warning;
+  .panel-footer {
+    line-height: normal;
+  }
   .panel-heading {
+    line-height: normal;
     a {
       color: white;
     }
