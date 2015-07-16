@@ -30,14 +30,14 @@
   .col-md-4
     %p
       %b Artists:
-      = render @game_summary.bgg_artists
+      = render partial: 'bgg_artists/bgg_artist_badge', collection: @game_summary.bgg_artists, as: :bgg_artist
   .col-md-4
     %p
       %b Designers:
-      = render @game_summary.bgg_designers
+      = render partial: 'bgg_designers/bgg_designer_badge', collection: @game_summary.bgg_designers, as: :bgg_designer
   .col-md-4
     %p
       %b Publishers:
-      = render @game_summary.bgg_publishers
+      = render partial: 'bgg_publishers/bgg_publisher_badge', collection: @game_summary.bgg_publishers, as: :bgg_publisher
 
 = link_to 'Back', game_summaries_path
