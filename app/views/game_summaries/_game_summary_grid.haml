@@ -20,10 +20,6 @@
     %span.pull-left
       = sort_link @q, :bgg_game_rank, 'Bgg Rank', {}, class: 'btn btn-sm btn-primary'
 
-.row
-  .col-md-12
-    .btn-group
-
 #findBggGameSearchForm.row.well{style: 'display: none;'}
   = render 'bgg_game_searches/form', orig_term: nil
 

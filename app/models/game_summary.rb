@@ -41,4 +41,5 @@ class GameSummary < ActiveRecord::Base
   has_many :game_summary_publishers
   has_many :bgg_publishers, through: :game_summary_publishers
 
+  acts_as_voteable
 end

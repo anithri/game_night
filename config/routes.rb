@@ -73,7 +73,10 @@ Rails.application.routes.draw do
   resources :bgg_mechanics, only: [:index, :show]
   resources :bgg_publishers, only: [:index, :show]
 
-  resources :game_summaries, only: [:index, :show]
+  resources :game_summaries, only: [:index, :show] do
+    get 'want_to_play', on: :collection
+    get 'request_play', on: :member
+  end
   resources :players
 
   devise_for :player_accounts, controllers: {registrations: 'registrations'}

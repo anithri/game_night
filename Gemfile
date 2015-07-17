@@ -33,7 +33,7 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'mailgun_rails'
 gem 'ffaker'
-
+gem 'thumbs_up', github: 'bouchard/thumbs_up'
 source 'https://rails-assets.org' do
   gem 'rails-assets-select2-bootstrap'
   gem 'rails-assets-select2'

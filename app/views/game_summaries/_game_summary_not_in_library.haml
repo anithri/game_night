@@ -15,7 +15,9 @@
           = image_tag game_summary.thumbnail_url, class: :center
     .panel-footer
       .row
-        .col-md-6
+        .col-md-4
           = render 'game_libraries/add_to_library_button', game_summary: game_summary
-        .col-md-6
+        .col-md-4.text-center
           = render 'wish_lists/add_to_wish_list_button', game_summary: game_summary
+        .col-md-4.text-right
+          = render 'game_summaries/request_play_button', game_summary: game_summary

@@ -1,0 +1,11 @@
+.row
+  .col-md-6
+    %h1{style: 'margin-top: 0px;'}= "Want To Play"
+.row
+  - if @game_summaries.empty?
+    No Games Requested
+  - else
+    - @game_summaries.each_slice(4) do |gs_row|
+      .row
+        = render gs_row
+

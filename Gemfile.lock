@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/bouchard/thumbs_up.git
+  revision: cb6393245e0ea18a325ed38f6c26ef3d3966d5b2
+  specs:
+    thumbs_up (0.6.7)
+      activerecord
+      statistics2
+
+GIT
   remote: https://github.com/anithri/bgg.git
   revision: 4eca9b5eeded10917bb3da66c4383a078b7e226a
   specs:
@@ -227,7 +235,7 @@ GEM
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
-    multi_json (1.11.0)
+    multi_json (1.11.2)
     multi_xml (0.5.5)
     nenv (0.2.0)
     netrc (0.10.3)
@@ -382,6 +390,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    statistics2 (0.54)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
@@ -474,6 +483,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-commands-rspec
+  thumbs_up!
   turbolinks
   uglifier (~> 2.7.0)
   web-console (~> 2.0)

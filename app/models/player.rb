@@ -28,6 +28,7 @@ class Player < ActiveRecord::Base
 
   after_create :create_default_library_and_wish_list
 
+  acts_as_voter
   def display_name
     name
   end

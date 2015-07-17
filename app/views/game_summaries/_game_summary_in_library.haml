@@ -13,5 +13,9 @@
         .col-md-9
           = image_tag game_summary.thumbnail_url, class: :center, height: '120px'
     .panel-footer
-      = render 'game_libraries/rm_from_library_button', game_summary: game_summary
+      .row
+        .col-md-6
+          = render 'game_libraries/rm_from_library_button', game_summary: game_summary
+        .col-md-6.text-right
+          = render 'game_summaries/request_play_button', game_summary: game_summary
 
