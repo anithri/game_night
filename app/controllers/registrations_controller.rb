@@ -11,6 +11,8 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
+    #lazy
+    params[:player_account][:player_attributes] = params[:player_account][:player]
     params.require(resource_name).permit(:email,
                                          :password,
                                          :password_confirmation,
