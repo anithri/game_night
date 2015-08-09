@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716220853) do
+ActiveRecord::Schema.define(version: 20150808192020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -216,10 +216,11 @@ ActiveRecord::Schema.define(version: 20150716220853) do
     t.uuid     "player_account_id"
     t.boolean  "public_email",      default: false
     t.string   "gravatar_email"
-    t.string   "slug",                              null: false
+    t.string   "slug",                                                                                             null: false
     t.integer  "shared_with",       default: 0
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                                                                                       null: false
+    t.datetime "updated_at",                                                                                       null: false
+    t.string   "avatar_url",        default: "https://dl.dropboxusercontent.com/u/2717187/Pictures/crit_fail.png"
   end
 
   add_index "players", ["player_account_id"], name: "index_players_on_player_account_id", using: :btree

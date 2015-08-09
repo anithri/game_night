@@ -1,40 +1,37 @@
-.row
-  .col-md-6
-    %h1{style: 'margin-top: 0px;'}= grid_title || "Game Summaries"
-  .col-md-6
-    %span.pull-right
-      %button.btn.btn-default.btn-sm{onclick:'$("#gameSummarySearchForm").toggle();false'}= icon('search','Search')
-    %span.pull-right
-      %button.btn.btn-default.btn-sm{onclick:'$("#findBggGameSearchForm").toggle();false'}= icon('plus','From BGG')
-      &nbsp;
-    %span.pull-left
-      = sort_link @q, :name, "Name", {default_order: :desc}, class: 'btn btn-sm btn-primary'
-    %span.pull-left
-      &nbsp;
-    %span.pull-left
-      = sort_link @q, :game_library_items_count, '# in libraries', {default_order: :desc}, class: 'btn btn-sm btn-primary'
-    %span.pull-left
-      = sort_link @q, :wish_list_items_count, '# in Wish Lists', {default_order: :desc}, class: 'btn btn-sm btn-primary'
-    %span.pull-left
-      &nbsp;
-    %span.pull-left
-      = sort_link @q, :bgg_game_rank, 'Bgg Rank', {}, class: 'btn btn-sm btn-primary'
+.col-xs-12.col-xl-10.col-xl-offset-1
+  .row
+    .col-xs-12.col-lg-4
+      = image_tag grid_icon_url, height: 80, width: 80, class: 'img-rounded pull-left'
+      %h1{style: 'margin-top: 0px;'}= grid_title || "Game Summaries"
+    .col-xs-12.col-lg-8
+      %span.pull-right
+        %button.btn.btn-default.btn-sm{onclick:'$("#gameSummarySearchForm").toggle();false'}= icon('search','Search')
+      %span.pull-right
+        %button.btn.btn-default.btn-sm{onclick:'$("#findBggGameSearchForm").toggle();false'}= icon('plus','From BGG')
+      .dropdown
+        %button.btn.btn-primary.btn-sm.dropdown-toggle{data:{toggle: 'dropdown'}}
+          By: #{t(@q.sorts.first.name, context: @q.context)}
+          = icon 'caret-down'
+        %ul.dropdown-menu
+          %li= sort_link @q, :name, "Name", {default_order: :desc}
+          %li= sort_link @q, :game_library_items_count, '# in libraries', {default_order: :desc}
+          %li= sort_link @q, :wish_list_items_count, '# in Wish Lists', {default_order: :desc}
+          %li= sort_link @q, :bgg_game_rank, 'Bgg Rank', {}
 
-#findBggGameSearchForm.row.well{style: 'display: none;'}
-  = render 'bgg_game_searches/form', orig_term: nil
+  #findBggGameSearchForm.row.well{style: 'display: none;'}
+    = render 'bgg_game_searches/form', orig_term: nil
 
-#gameSummarySearchForm.row.well{style: 'display: none;'}
-  = render 'game_summaries/search_form'
+  #gameSummarySearchForm.row.well{style: 'display: none;'}
+    = render 'game_summaries/search_form'
 
-.row
-  - if game_summaries.empty?
-    Go forth and play more games!
-  - else
-    - game_summaries.each_slice(4) do |gs_row|
-      .row
-        = render gs_row
-.row
-  = paginate @game_summaries, theme: 'twitter-bootstrap-3'
+  .row
+    - if game_summaries.empty?
+      = render 'game_summaries/no_summaries'
+    - else
+      = render game_summaries
+
+  .row
+    = paginate @game_summaries, theme: 'twitter-bootstrap-3'
 
 
 

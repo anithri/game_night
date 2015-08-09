@@ -11,10 +11,11 @@
     %header
       = render 'layouts/navigation'
     %main{:role => "main", style: 'padding-top: 12px;'}
-      .container
-        #statusMessages
+      .container-fluid
+        #statusMessages.col-md-4.col-md-offset-2.col-lg-2.col-lg-offset-5
           = render 'layouts/messages'
         = yield
-    = render 'layouts/footer'
+    %footer
+      = render 'layouts/footer'
 
 

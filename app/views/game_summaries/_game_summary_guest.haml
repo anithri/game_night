@@ -1,17 +1,16 @@
-.col-md-3.gameSummaryBlock
-  .panel.panel-gsGuest
-    .panel-heading
-      = rank_badge(game_summary)
-      = link_to game_summary_path(game_summary), class: '' do
-        = game_summary.name
-        %small= game_summary.year_published
-    .panel-body
-      .row
-        .col-md-3
-          = rank_badge(game_summary)
-          = library_count(game_summary)
-          = wish_list_count(game_summary)
-        .col-md-9
-          = image_tag game_summary.thumbnail_url, class: :center, height: '120px'
+.panel.panel-gsGuest
+  .panel-heading
+    = rank_badge(game_summary)
+    = link_to game_summary_path(game_summary), class: '' do
+      = game_summary.name
+      %small= game_summary.year_published
+  .panel-body
+    .row
+      .col-md-3
+        = rank_badge(game_summary)
+        = library_count(game_summary)
+        = wish_list_count(game_summary)
+      .col-md-9
+        = image_tag game_summary.thumbnail_url, class: :center, height: '120px'
 
 

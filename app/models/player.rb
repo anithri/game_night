@@ -11,6 +11,7 @@
 #  shared_with       :integer          default(0)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  avatar_url        :string           default("https://dl.dropboxusercontent.com/u/2717187/Pictures/crit_fail.png")
 #
 # Indexes
 #

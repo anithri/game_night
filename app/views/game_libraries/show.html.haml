@@ -1,7 +1,7 @@
-%p#notice= notice
-
 .row
 .row
   = render 'game_summaries/game_summary_grid', game_summaries: @game_summaries,
-                                               grid_title: "Player: #{@game_library.player.display_name}"
+                                               grid_title: "Player: #{@game_library.player.display_name}",
+                                               grid_icon_url:  @game_library.player.avatar_url
+
 
